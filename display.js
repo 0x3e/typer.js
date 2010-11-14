@@ -1,10 +1,11 @@
 function display(){
-  this.current_letter=0;
-  this.current_press=0;
+  this.current_letter=0
+  this.current_press=0
   this.correct_letters=0
   this.incorrect_letters=0
-  this.start_time=0;
-  this.total_time=0;
+  this.start_time=0
+  this.total_time=0
+  this.typing=false
   this.key_action=function(key_code){
     //console.log(key_code)
     if(this.keys.not_count.indexOf(key_code)==-1)
@@ -97,5 +98,6 @@ function display(){
     delete this.timer
     el = document.getElementById('wpm')
     el.innerHTML=Math.round((this.correct_letters/5)/(this.total_time/1000/60))
+    this.typing=false
   }
 }

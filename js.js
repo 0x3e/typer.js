@@ -1,11 +1,14 @@
 var timers=[]
 var repeat=250
 var display=new display()
+display.typing=true
 document.onkeydown=function (evt){
-  key=evt.keyCode
-  display.key_action(key)
-  if (repeat!==0)
-    timers[key]= setInterval('display.key_action(key)', repeat)
+  if(display.typing){
+    key=evt.keyCode
+    display.key_action(key)
+    if (repeat!==0)
+      timers[key]= setInterval('display.key_action(key)', repeat)
+  }
 }
 document.onkeyup=function (evt){
   key=evt.keyCode
