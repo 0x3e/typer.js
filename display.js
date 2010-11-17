@@ -28,7 +28,7 @@ function display(){
   }
   this.current_letter=0
   this.load_letters=function(chars){
-    console.log(chars)
+   //console.log(chars)
     this.add_div({id:'letters_container'})
     letters_in_current_words=chars.length
     for(i=0;i<letters_in_current_words;i++){
