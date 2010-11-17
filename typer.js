@@ -21,7 +21,7 @@ function typer(){
       d=null
     }
     if(counts)
-      this.current_press++;
+      this.current_press++
     if(timers[16])
       letter=this.test_words[this.current_letter].toLowerCase()
     else

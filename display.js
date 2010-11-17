@@ -54,7 +54,7 @@ function display(){
   }
   this.update_letters=function(current_letter){
       el = document.getElementById('l'+(current_letter-1))
-      el.className=el.className.replace(/next/, '');
+      el.className=el.className.replace(/next/, '')
       el.className=el.className+' done'
       el = document.getElementById('l'+current_letter)
       if(el) el.className=el.className+' next'
