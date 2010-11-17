@@ -47,6 +47,7 @@ function typer(){
 		})
 	}
   this.complete=function(){
+		this.update_display()
     clearInterval(this.timer)
     delete this.timer
     this.typing=false
