@@ -1,7 +1,6 @@
 var timers=[]
 var repeat=250
 var typer=new typer()
-var display=new display()
 typer.typing=true
 document.onkeydown=function (evt){
   if(typer.typing){
