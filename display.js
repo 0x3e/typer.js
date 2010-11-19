@@ -1,16 +1,15 @@
-function display(){
+function display()
+{
   this.init=function(chars)
   {
     this.load_letters(chars)
-    this.add_div({id:'keyDowns_label', classes:'label', inner_html:'Total keys'})
-    this.add_div({id:'keyDowns', inner_html:'0'})
-    this.add_div({id:'word_label', classes:'label', inner_html:'Total words'})
+    this.add_div({id:'word_label', classes:'label', inner_html:'words'})
     this.add_div({id:'word', inner_html:'0'})
-    this.add_div({id:'error_label', classes:'label', inner_html:'Total errors'})
+    this.add_div({id:'error_label', classes:'label', inner_html:'errors'})
     this.add_div({id:'errors', inner_html:'0'})
-    this.add_div({id:'time_label', classes:'label', inner_html:'Total time'})
+    this.add_div({id:'time_label', classes:'label', inner_html:'time'})
     this.add_div({id:'time', inner_html:'0'})
-    this.add_div({id:'wpm_label', classes:'label', inner_html:'Total wpm'})
+    this.add_div({id:'wpm_label', classes:'label', inner_html:'wpm'})
     this.add_div({id:'wpm', inner_html:'0'})
   }
   this.add_div=function(ob)
@@ -44,10 +43,8 @@ function display(){
     d=new Date
     el = document.getElementById('time')
     this.total_time=d.getTime()-ob.start_time
-    el.innerHTML=Math.floor(this.total_time/1000)+'.'+Math.floor(this.total_time/100)%10
+    el.innerHTML=Math.floor(this.total_time/1000)+'.'+Math.ceil(this.total_time/100)%10
     d=null
-    el = document.getElementById('keyDowns')
-    el.innerHTML=ob.current_press
     el = document.getElementById('word')
     el.innerHTML=Math.round(ob.correct_letters/5)
     el = document.getElementById('errors')
@@ -57,10 +54,10 @@ function display(){
   }
   this.update_letters=function(current_letter)
   {
-      el = document.getElementById('l'+(current_letter-1))
-      el.className=el.className.replace(/next/, '')
-      el.className=el.className+' done'
-      el = document.getElementById('l'+current_letter)
-      if(el) el.className=el.className+' next'
+    el = document.getElementById('l'+(current_letter-1))
+    el.className=el.className.replace(/next/, '')
+    el.className=el.className+' done'
+    el = document.getElementById('l'+current_letter)
+    if(el) el.className=el.className+' next'
   }
 }

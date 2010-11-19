@@ -1,4 +1,4 @@
-.letter{font-size: 200%; display: inline; white-space: pre;}
+.letter{font-size: 160%; display: inline; white-space: pre;}
 .next{font-size: 250%; font-weight: bold; text-decoration: underline;}
 .done{color: #444;}
-.label{clear: both; width: 8em;; float: left;}
+.label{clear: both; width: 4em;; float: left;}
