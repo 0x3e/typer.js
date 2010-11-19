@@ -9,7 +9,7 @@ function keys(){
     else
       return this.char_char[code]
   }
-  this._meta=[16,17,18,20,27]
+  this._meta=[0,16,17,18,20,27]
   this.meta=function(key_code)
   {
     if(this._meta.indexOf(key_code)!=-1)
@@ -19,7 +19,8 @@ function keys(){
   }
   this.char_char=
   {
-     8:'backspace'
+     0:'super'
+    ,8:'backspace'
     ,9:'tab'
     ,13:'\n'
     ,16:'shift'
