@@ -8,7 +8,8 @@ function typer(){
   this.incorrect_letters=0
   this.start_time=0
   this.total_time=0
-  this.key_action=function(key_code){
+  this.key_action=function(key_code)
+  {
     if(key_code)
       this.key_code=key_code
     else
@@ -37,7 +38,8 @@ function typer(){
     else
       this.incorrect_letters++
   }
-	this.update_display=function(){
+	this.update_display=function()
+  {
     this.display.update_totals({
 	 		correct_letters:this.correct_letters
       ,current_press:this.current_press
@@ -46,13 +48,17 @@ function typer(){
       ,start_time:this.start_time
 		})
 	}
-  this.complete=function(){
+  this.complete=function()
+  {
 		this.update_display()
+    d=new Date
+    this.total_time=d.getTime-this.start_time
     clearInterval(this.timer)
     delete this.timer
     this.typing=false
   }
-  this.init=function(){
+  this.init=function()
+  {
     typer.typing=true
     this.display.init(this.test_words)
   }
