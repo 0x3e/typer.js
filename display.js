@@ -14,7 +14,17 @@ function display()
   }
   this.add_div=function(ob)
   {
-    div = document.createElement('div')
+    ob.element="div"
+    this.add_element(ob)
+  }
+  this.add_span=function(ob)
+  {
+    ob.element="span"
+    this.add_element(ob)
+  }
+  this.add_element=function(ob)
+  {
+    div = document.createElement(ob.element)
     div.id=ob.id
     if(ob.classes)
       div.className=ob.classes
@@ -33,7 +43,10 @@ function display()
     this.add_div({id:'letters_container'})
     letters_in_current_words=chars.length
     for(i=0;i<letters_in_current_words;i++){
-      this.add_div({parent:'letters_container', id:'l'+i,classes:"letter "+chars[i],inner_html:chars[i]})
+      if(chars[i]=='\n')
+        this.add_span({parent:'letters_container', id:'l'+i,classes:"newline letter",inner_html:chars[i]})
+       else
+        this.add_span({parent:'letters_container', id:'l'+i,classes:"letter "+chars[i],inner_html:chars[i]})
     }
     el = document.getElementById('l0')
     el.className=el.className+' next'

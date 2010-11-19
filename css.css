@@ -2,3 +2,4 @@
 .next{font-size: 250%; font-weight: bold; text-decoration: underline;}
 .done{color: #444;}
 .label{clear: both; width: 4em;; float: left;}
+.newline{ border: 3px solid #ddd; }

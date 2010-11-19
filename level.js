@@ -10,7 +10,7 @@ function level(display,keys,words){
   this.total_time=0
   this.key_action=function(key_code)
   {
-    console.log(key_code)
+    //console.log(key_code)
     if(this.keys.meta(key_code)==true)
       return
     if(this.current_press==0){

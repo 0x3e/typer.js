@@ -10,6 +10,8 @@ document.onkeydown=function (evt)
     if (repeat!==0)
       timers[key]= setInterval('typer.key_action('+key+')', repeat)
   }
+  if(key==222||key==191)
+    return false
 }
 document.onkeyup=function (evt)
 {
