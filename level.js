@@ -1,5 +1,6 @@
-function level(display,keys,words){
-  this.display=display
+function level(display_parent,keys,words){
+  this.level_display=new level_display(display_parent)
+  this.score_display=new score_display('score_display_area')
   this.keys=keys
   this.words=words
   this.current_letter=0
@@ -22,11 +23,11 @@ function level(display,keys,words){
     this.current_press++
     //put this in the keys I think
     letter=this.words[this.current_letter]
-    js_char=this.keys.get_char(key_code)
-    if(js_char==letter){
+    if(this.keys.equivalent(key_code,letter))
+    {
       this.correct_letters++
       this.current_letter++
-      this.display.update_letters(this.current_letter)
+      this.level_display.update_letters(this.current_letter)
       if(this.current_letter==this.words.length)
         this.complete()
     }
@@ -35,7 +36,7 @@ function level(display,keys,words){
   }
   this.update_display=function()
   {
-    this.display.update_totals({
+    this.score_display.update_totals({
       correct_letters:this.correct_letters
       ,current_press:this.current_press
       ,incorrect_letters:this.incorrect_letters
@@ -55,6 +56,7 @@ function level(display,keys,words){
   this.init=function()
   {
     typer.typing=true
-    this.display.init(this.words)
+    this.level_display.init(this.words)
+    this.score_display.init()
   }
 }

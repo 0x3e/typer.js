@@ -1,4 +1,11 @@
 function keys(){
+  this.equivalent=function(key_code,letter)
+  {
+    if(this.get_char(key_code)==letter)
+      return true
+    else
+      return false
+  }
   this.get_char=function(code)
   {
     if(timers[16])

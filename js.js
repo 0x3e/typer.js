@@ -3,8 +3,8 @@ var repeat=250
 var typer=new typer()
 document.onkeydown=function (evt)
 {
-  console.log('d'+evt.keyCode)
-  console.log('d_char'+evt.charCode)
+  //console.log('d'+evt.keyCode)
+  //console.log('d_char'+evt.charCode)
   if(typer.typing){
     key=evt.keyCode
     typer.key_action(key)
@@ -16,8 +16,8 @@ document.onkeydown=function (evt)
 }
 document.onkeypress=function (evt)
 {
-  console.log('press'+evt.keyCode)
-  console.log('press_char'+evt.charCode)
+  //console.log('press'+evt.keyCode)
+  //console.log('press_char'+evt.charCode)
 }
 document.onkeyup=function (evt)
 {
