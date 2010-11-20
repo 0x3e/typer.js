@@ -1,10 +1,12 @@
-function display()
+function display(level,score)
 {
+  this.level=level
+  this.score=score
   this.display_parent='body'
   this.init=function()
   {
-    this.add_div({id:'level_display_area', classes:'level', inner_html:'level'})
-    this.add_div({id:'score_display_area', classes:'score', inner_html:'score'})
+    this.add_div({id:this.level, classes:'level', inner_html:'level'})
+    this.add_div({id:this.score, classes:'score', inner_html:'score'})
   }
   this.add_div=function(ob)
   {

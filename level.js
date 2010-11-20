@@ -1,6 +1,6 @@
-function level(display_parent,keys,words){
-  this.level_display=new level_display(display_parent)
-  this.score_display=new score_display('score_display_area')
+function level(display,keys,words){
+  this.level_display=new level_display(display.level)
+  this.score_display=new score_display(display.score)
   this.keys=keys
   this.words=words
   this.current_letter=0
@@ -17,7 +17,7 @@ function level(display_parent,keys,words){
     if(this.current_press==0){
       d=new Date
       this.start_time=d.getTime()
-      this.timer=setInterval('typer.update_display()',107)
+      this.timer=setInterval(function(){typer.level.update_score()},807)
       d=null
     }
     this.current_press++
@@ -34,7 +34,7 @@ function level(display_parent,keys,words){
     else
       this.incorrect_letters++
   }
-  this.update_display=function()
+  this.update_score=function()
   {
     this.score_display.update_totals({
       correct_letters:this.correct_letters
@@ -46,7 +46,7 @@ function level(display_parent,keys,words){
   }
   this.complete=function()
   {
-    this.update_display()
+    this.update_score()
     d=new Date
     this.total_time=d.getTime-this.start_time
     clearInterval(this.timer)
