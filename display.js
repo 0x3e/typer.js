@@ -1,10 +1,12 @@
-function display(level,score)
+function display(menu,level,score)
 {
+  this.menu=menu
   this.level=level
   this.score=score
   this.display_parent='body'
   this.init=function()
   {
+    this.add_div({id:this.menu, classes:'menu', inner_html:'menu'})
     this.add_div({id:this.level, classes:'level', inner_html:'level'})
     this.add_div({id:this.score, classes:'score', inner_html:'score'})
   }
@@ -36,5 +38,15 @@ function display(level,score)
       if(!el) el=document.body
       el.appendChild(div)
     }
+  }
+  this.hide=function()
+  {
+    el = document.getElementById(this.display_parent)
+    if(el) el.style.display = 'none';
+  }
+  this.show=function()
+  {
+    el = document.getElementById(this.display_parent)
+    if(el) el.style.display = 'block';
   }
 }

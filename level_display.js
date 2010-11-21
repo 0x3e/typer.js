@@ -30,4 +30,9 @@ function level_display(display_parent)
     el = document.getElementById('l'+current_letter)
     if(el) el.className=el.className+' next'
   }
+  this.error_letter=function(current_letter)
+  {
+    el = document.getElementById('l'+current_letter)
+    if(el) el.className=el.className+' error'
+  }
 }

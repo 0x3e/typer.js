@@ -1,5 +1,6 @@
 .letter{font-family: monospace;font-size: 160%; display: inline; white-space: pre;}
-.next{font-size: 250%; font-weight: bold; line-height: 180%;} 
+.next{font-size: 180%; font-weight: bold; line-height: 180%;background: #ddd;} 
 .done{color: #444;}
 .label{clear: both; width: 4em;; float: left;}
-.newline{ border: 3px solid #ddd; }
+.newline:before{content:"↵";}
+.error{ background: #ccc }

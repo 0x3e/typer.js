@@ -1,26 +1,52 @@
 function typer(){
   this.keys=new keys()
-  this.words='Hello world how are you today.'
-  //this.words='this.level=new level(this.display,this.keys,this.words)'
-  //this.words='var http = require(\'http\');\nhttp.createServer(function (req, res) {\n  res.writeHead(200, {\'Content-Type\': \'text/plain\'});\n  res.end(\'Hello World\\n\');\n}).listen(8124, "127.0.0.1");\nconsole.log(\'Server running at http://127.0.0.1:8124/\');'
-  //this.words='<?>\'"\\~!@#$%^&*|{}[];'
-  //this.words='for(i=0;i++;i<100)'
-  //this.words='(1lI||Il1)'
-  //this.words='ci\'this.level=new level(this.display,this.keys,this.words)'
-
-  this.display=new display('level_display_area','score_display_area')
-  this.level=new level(this.display,this.keys,this.words)
-	this.update_display=function()
-  {
-    this.level.update_display()
-  }
+  this.words_database=new words_database()
+  this.words_database.init()
+  this.display=new display('menu_display_area','level_display_area','score_display_area')
+  this.menu=new menu(this.display,this.keys,this.words_database)
+  this.level=new level(this.display,this.keys,this.words_database.get_selected())
   this.key_action=function(key_code)
   {
-    this.level.key_action(key_code)
+    if(this.context=='menu')
+      this.menu.key_action(key_code)
+    else if(this.context=='level')
+      this.level.key_action(key_code)
+    else
+      console.log('context error')
+  }
+  this.reset_level=function()
+  {
+    delete(this.level)
+    this.level=new level(this.display,this.keys,this.words_database.get_selected())
+    this.level.init()
+  }
+  this.switch_context=function(context)
+  {
+    d = new Date();
+    d.setTime(d.getTime()+(24*60*60*1000));
+    expires = "; expires="+d.toGMTString();
+    if (context=='level')
+    {
+      this.context='level'
+      document.cookie = 'context=level; expires='+expires+' path=/'
+      this.menu.bg()
+      this.level.fg()
+    }
+    else
+    {
+      this.context='menu'
+      document.cookie = 'context=menu; expires='+expires+' path=/'
+      this.level.bg()
+      this.menu.fg()
+    }
   }
   this.init=function()
   {
     this.display.init()
     this.level.init()
+    this.menu.init()
+    context=get_cookie_value('context')
+    console.log(context)
+    this.switch_context(context)
   }
 }

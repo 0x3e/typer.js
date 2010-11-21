@@ -12,6 +12,11 @@ function level(display,keys,words){
   this.key_action=function(key_code)
   {
     //console.log(key_code)
+    if(this.keys.equivalent(key_code,'escape'))
+    {
+      typer.switch_context('menu')
+      return
+    }
     if(this.keys.meta(key_code)==true)
       return
     if(this.current_press==0){
@@ -32,7 +37,10 @@ function level(display,keys,words){
         this.complete()
     }
     else
+    {
       this.incorrect_letters++
+      this.level_display.error_letter(this.current_letter)
+    }
   }
   this.update_score=function()
   {
@@ -52,6 +60,16 @@ function level(display,keys,words){
     clearInterval(this.timer)
     delete this.timer
     this.typing=false
+  }
+  this.fg=function()
+  {
+    this.level_display.show()
+    this.score_display.show()
+  }
+  this.bg=function()
+  {
+    this.level_display.hide()
+    this.score_display.hide()
   }
   this.init=function()
   {
