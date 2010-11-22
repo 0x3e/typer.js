@@ -3,4 +3,9 @@
 .done{color: #444;}
 .label{clear: both; width: 4em;; float: left;}
 .newline:before{content:"↵";}
-.error{ background: #ccc }
+.error{ background: #fcc }
+.error1{ background: #fcc }
+.error2{ background: #faa }
+.error3{ background: #f77 }
+.error4{ background: #f44 }
+.error5{ background: #f00 }

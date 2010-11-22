@@ -12,7 +12,7 @@ function typer(){
     else if(this.context=='level')
       this.level.key_action(key_code)
     else
-      console.log('context error')
+      this.switch_context('menu')
   }
   this.reset_level=function()
   {
@@ -22,20 +22,17 @@ function typer(){
   }
   this.switch_context=function(context)
   {
-    d = new Date();
-    d.setTime(d.getTime()+(24*60*60*1000));
-    expires = "; expires="+d.toGMTString();
     if (context=='level')
     {
       this.context='level'
-      document.cookie = 'context=level; expires='+expires+' path=/'
+      store.set_value('context','level')
       this.menu.bg()
       this.level.fg()
     }
     else
     {
       this.context='menu'
-      document.cookie = 'context=menu; expires='+expires+' path=/'
+      store.set_value('context','menu')
       this.level.bg()
       this.menu.fg()
     }
@@ -45,8 +42,8 @@ function typer(){
     this.display.init()
     this.level.init()
     this.menu.init()
-    context=get_cookie_value('context')
-    console.log(context)
+    context=store.get_value('context')
+    //console.log(context)
     this.switch_context(context)
   }
 }

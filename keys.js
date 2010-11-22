@@ -1,6 +1,7 @@
 function keys(){
   this.equivalent=function(key_code,letter)
   {
+    //console.log(key_code)
     if(this.get_char(key_code)==letter)
       return true
     else
@@ -26,8 +27,7 @@ function keys(){
   }
   this.char_char=
   {
-     0:'super'
-    ,8:'backspace'
+     8:'backspace'
     ,9:'tab'
     ,13:'\n'
     ,16:'shift'

@@ -2,6 +2,7 @@ level_display.prototype = new display()
 function level_display(display_parent)
 {
   this.display_parent=display_parent
+  this.errors=[]
   this.init=function(chars)
   {
     el = document.getElementById(this.display_parent)
@@ -22,17 +23,25 @@ function level_display(display_parent)
     el = document.getElementById('l0')
     el.className=el.className+' next'
   }
-  this.update_letters=function(current_letter)
+  this.update_letters=function(letter_index)
   {
-    el = document.getElementById('l'+(current_letter-1))
+    el = document.getElementById('l'+(letter_index-1))
     el.className=el.className.replace(/next/, '')
     el.className=el.className+' done'
-    el = document.getElementById('l'+current_letter)
+    el = document.getElementById('l'+letter_index)
     if(el) el.className=el.className+' next'
   }
-  this.error_letter=function(current_letter)
+  this.error_letter=function(letter_index)
   {
-    el = document.getElementById('l'+current_letter)
-    if(el) el.className=el.className+' error'
+    if(isNaN(this.errors[letter_index]))
+      this.errors[letter_index]=1
+    else if(this.errors[letter_index]<5)
+      this.errors[letter_index]++
+    el = document.getElementById('l'+letter_index)
+    if(el) 
+    {
+      el.className=el.className.replace(/error\d+/, '')
+      el.className=el.className+' error'+this.errors[letter_index]
+    }
   }
 }
