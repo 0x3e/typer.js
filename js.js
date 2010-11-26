@@ -7,7 +7,7 @@ document.onkeydown=function (evt)
   //console.log('d'+evt.keyCode)
   //console.log('d_char'+evt.charCode)
   key=evt.keyCode
-  if(typer.typing){
+  if(typer.typing && !timers[key]){
     typer.key_action(key)
     if (repeat!==0)
       timers[key]= setInterval('typer.key_action('+key+')', repeat)
