@@ -1,4 +1,5 @@
-function words_database(){
+function words_database()
+{
   this._selection='a'
   this.init=function()
   {

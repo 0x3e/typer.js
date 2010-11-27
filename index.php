@@ -3,6 +3,9 @@
 <head>
 <meta charset=utf-8 />
 <title>0x3e</title>
+<?php if($_REQUEST['cmp']):?>
+<script type="text/javascript" src="typer_compiled.js"></script>
+<?php else:?>
 <script type="text/javascript" src="words_database.js"></script>
 <script type="text/javascript" src="display.js"></script>
 <script type="text/javascript" src="menu_display.js"></script>
@@ -14,6 +17,7 @@
 <script type="text/javascript" src="store.js"></script>
 <script type="text/javascript" src="typer.js"></script>
 <script type="text/javascript" src="js.js"></script>
+<?php endif?>
 <link href="css.css" rel="stylesheet" type="text/css" />
 </head>
 <body onload="typer.init()">

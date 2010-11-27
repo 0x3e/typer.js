@@ -9,4 +9,7 @@ keys.js \
 level.js \
 store.js \
 typer.js \
-js.js 
+js.js \
+> typer_all.js
+
+java -jar compiler/compiler.jar --js typer_all.js --js_output_file typer_compiled.js --compilation_level SIMPLE_OPTIMIZATIONS

@@ -1,4 +1,5 @@
-function keys(){
+function keys()
+{
   this.equivalent=function(key_code,letter)
   {
     //console.log(key_code)

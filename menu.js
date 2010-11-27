@@ -20,8 +20,6 @@ function menu(display,keys,words_database)
       typer.reset_level()
       typer.switch_context('level')
     }
-    else if(this.keys.equivalent(key_code,'escape'))
-      typer.switch_context('level')
   }
   this.init=function()
   {

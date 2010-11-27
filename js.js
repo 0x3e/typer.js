@@ -36,3 +36,4 @@ document.onblur=function ()
   }
 }
 
+window[typer.js]=typer

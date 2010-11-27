@@ -1,4 +1,6 @@
-function typer(){
+function typer()
+{
+  this.context='menu'
   this.keys=new keys()
   this.words_database=new words_database()
   this.words_database.init()
@@ -7,6 +9,12 @@ function typer(){
   this.level=new level(this.display,this.keys,this.words_database.get_selected())
   this.key_action=function(key_code)
   {
+    if(this.keys.equivalent(key_code,'escape'))
+    {
+      this.switch_context()
+      return
+    }
+    //console.log(key_code)
     if(this.context=='menu')
       this.menu.key_action(key_code)
     else if(this.context=='level')
@@ -20,7 +28,24 @@ function typer(){
     this.level=new level(this.display,this.keys,this.words_database.get_selected())
     this.level.init()
   }
-  this.switch_context=function(context)
+  this.switch_context=function()
+  {
+    if (this.context=='menu')
+    {
+      this.context='level'
+      store.set_value('context','level')
+      this.menu.bg()
+      this.level.fg()
+    }
+    else
+    {
+      this.context='menu'
+      store.set_value('context','menu')
+      this.level.bg()
+      this.menu.fg()
+    }
+  }
+  this.set_context=function(context)
   {
     if (context=='level')
     {
@@ -44,6 +69,6 @@ function typer(){
     this.menu.init()
     context=store.get_value('context')
     //console.log(context)
-    this.switch_context(context)
+    this.set_context(context)
   }
 }

@@ -1,4 +1,5 @@
-function level(display,keys,words){
+function level(display,keys,words)
+{
   this.level_display=new level_display(display.level)
   this.score_display=new score_display(display.score)
   this.keys=keys
@@ -12,11 +13,6 @@ function level(display,keys,words){
   this.key_action=function(key_code)
   {
     //console.log(key_code)
-    if(this.keys.equivalent(key_code,'escape'))
-    {
-      typer.switch_context('menu')
-      return
-    }
     if(this.keys.meta(key_code)==true)
       return
     if(this.current_press==0){
