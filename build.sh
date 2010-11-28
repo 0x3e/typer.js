@@ -12,4 +12,4 @@ typer.js \
 js.js \
 > typer_all.js
 
-java -jar compiler/compiler.jar --js typer_all.js --js_output_file typer_compiled.js --compilation_level SIMPLE_OPTIMIZATIONS
+java -jar compiler/compiler.jar --js typer_all.js --js_output_file typer_compiled.js --compilation_level ADVANCED_OPTIMIZATIONS # SIMPLE_OPTIMIZATIONS ADVANCED_OPTIMIZATIONS            

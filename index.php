@@ -3,6 +3,9 @@
 <head>
 <meta charset=utf-8 />
 <title>0x3e</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
 <?php if($_REQUEST['cmp']):?>
 <script type="text/javascript" src="typer_compiled.js"></script>
 <?php else:?>
@@ -18,8 +21,5 @@
 <script type="text/javascript" src="typer.js"></script>
 <script type="text/javascript" src="js.js"></script>
 <?php endif?>
-<link href="css.css" rel="stylesheet" type="text/css" />
-</head>
-<body onload="typer.init()">
 </body>
 </html>

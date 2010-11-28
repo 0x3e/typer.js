@@ -72,3 +72,4 @@ function typer()
     this.set_context(context)
   }
 }
+window['typer']=typer

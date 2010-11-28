@@ -35,5 +35,4 @@ document.onblur=function ()
     delete timers[key]
   }
 }
-
-window[typer.js]=typer
+window.onload = typer.init();
