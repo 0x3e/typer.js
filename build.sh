@@ -1,4 +1,5 @@
 cat \
+words_classic_texts.js \
 words_database.js \
 display.js \
 menu_display.js \

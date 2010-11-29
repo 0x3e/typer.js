@@ -1,8 +1,9 @@
-.letter{font-family: monospace;font-size: 160%; display: inline; white-space: pre;}
+.letter{font-family: monospace;font-size: 160%; display: inline; }
 .next{font-size: 180%; font-weight: bold; line-height: 180%;background: #ddd;} 
 .done{color: #444;}
 .label{clear: both; width: 4em;; float: left;}
 .newline:before{content:"↵";}
+.newline{white-space: pre;}
 .error{ background: #fcc }
 .error1{ background: #fcc }
 .error2{ background: #faa }

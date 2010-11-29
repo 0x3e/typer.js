@@ -3,6 +3,11 @@ function words_database()
   this._selection='a'
   this.init=function()
   {
+    //db=this
+    //ajax=new ajax
+    //ajax.get('words_classic_texts.json',function(req_json){db.load(req_json)},false)
+    word_list=new words_list
+    this.load(word_list.get_list())
     store_selection=store.get_value('word_database_selected')
     if(store_selection)
       this.set_selection(store_selection)
@@ -42,35 +47,25 @@ function words_database()
   {
     return this._words_descriptions[nu]
   }
+  this.load=function(resp_json)
+  {
+    //json=eval(resp_json)
+    json=resp_json
+    len=json.length
+    for(i=0;i<len;i++)
+    {
+      ascii=i+97
+      this._words_keys[i]=String.fromCharCode(ascii)
+      words=json[i].Content
+      this._words_values[i]=words
+      this._words_descriptions[i]=words.substring(0,11)
+    }
+  }
   this._words_keys=[
-     'a'
-    ,'b'
-    ,'c'
-    ,'d'
-    ,'e'
-    ,'f'
-    ,'g'
-    ,'h'
   ]
   this._words_values=[
-     'Hello world how are you today.'
-    ,'this.level=new level(this.display,this.keys,this.words)'
-    ,'var http = require(\'http\');\nhttp.createServer(function (req, res) {\n  res.writeHead(200, {\'Content-Type\': \'text/plain\'});\n  res.end(\'Hello World\\n\');\n}).listen(8124, "127.0.0.1");\nconsole.log(\'Server running at http://127.0.0.1:8124/\');'
-    ,'<?>\'"\\~!@#$%^&*|{}[];'
-    ,'for(i=0;i<128;i++)'
-    ,'(1lI||Il1)'
-    ,'this.level=new level(this.display,this.keys,this.words)'
-    ,'Once more unto the breach, dear friends, once more;\nOr close the wall up with our English dead.'
   ]
   this._words_descriptions=[
-     'Hello world...'
-    ,'this.level=...'
-    ,'var http = ...'
-    ,'&lt;?&gt;\'"\\~!@...'
-    ,'for(i=0;i<1...'
-    ,'(1lI||Il1)'
-    ,'this.level=...'
-    ,'Once more u...'
   ]
 }
 
