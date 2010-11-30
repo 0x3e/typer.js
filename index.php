@@ -3,11 +3,11 @@
 <head>
 <meta charset=utf-8 />
 <title>0x3e</title>
-<link href="css.css" rel="stylesheet" type="text/css" />
+<link href="c.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <?php if($_REQUEST['cmp']):?>
-<script type="text/javascript" src="typer_compiled.js"></script>
+<script type="text/javascript" src="t.js"></script>
 <?php else:?>
 <script type="text/javascript" src="words_classic_texts.js"></script>
 <script type="text/javascript" src="words_database.js"></script>

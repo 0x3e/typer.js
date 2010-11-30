@@ -16,9 +16,18 @@ function level_display(display_parent)
     letters_in_current_words=chars.length
     for(i=0;i<letters_in_current_words;i++){
       if(chars[i]=='\n')
+      {
         this.add_span({parent:'letters_container', id:'l'+i,classes:"newline letter",inner_html:chars[i]})
-       else
+      }
+      else if(chars[i]==' ')
+      {
+        this.add_span({parent:'letters_container', id:'l'+i,classes:"space letter",inner_html:chars[i]})
+        this.add_span({parent:'letters_container', id:'i'+i,classes:"inspace ",inner_html:chars[i]})
+      }
+      else
+      {
         this.add_span({parent:'letters_container', id:'l'+i,classes:"letter "+chars[i],inner_html:chars[i]})
+      }
     }
     el = document.getElementById('l0')
     el.className=el.className+' next'

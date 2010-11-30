@@ -4,9 +4,11 @@
 .label{clear: both; width: 4em;; float: left;}
 .newline:before{content:"↵";}
 .newline{white-space: pre;}
-.error{ background: #fcc }
-.error1{ background: #fcc }
-.error2{ background: #faa }
-.error3{ background: #f77 }
-.error4{ background: #f44 }
-.error5{ background: #f00 }
+.space{white-space: pre;} 
+.inspace{font-size: 1px;}
+.error{background: #fcc;}
+.error1{background: #fcc;}
+.error2{background: #faa;}
+.error3{background: #f77;}
+.error4{background: #f44;}
+.error5{background: #f00;}
