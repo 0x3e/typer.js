@@ -1,5 +1,3 @@
 CACHE MANIFEST
-# build 23
+# build 50
 index.html
-c.css
-t.js

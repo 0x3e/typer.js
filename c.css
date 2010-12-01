@@ -1,7 +1,7 @@
 .letter{font-family:monospace;font-size:160%;display:inline;}
 .next{font-size:180%;font-weight:bold;line-height:180%;background:#ddd;}
 .done{color:#444;}
-.label{clear:both;width:4em;;float:left;}
+.label{clear:both;width:4em;float:left;}
 .newline:before{content:"↵";}
 .newline{white-space:pre;}
 .space{white-space:pre;}
