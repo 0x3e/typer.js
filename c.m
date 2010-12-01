@@ -1,4 +1,5 @@
 CACHE MANIFEST
-/index.html
-/c.css
-/t.js
+# build 23
+index.html
+c.css
+t.js
