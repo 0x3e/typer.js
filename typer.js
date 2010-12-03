@@ -73,3 +73,4 @@ function typer()
   }
 }
 window['typer']=typer
+typer['key_action']=function(a){typer.key_action(a)}

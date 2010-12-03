@@ -18,7 +18,7 @@ function level(display,keys,words)
     if(this.current_press==0){
       d=new Date
       this.start_time=d.getTime()
-      this.timer=setInterval(function(){typer.level.update_score()},807)
+      this.timer=setInterval(function(){typer.level.update_score()},407)
       d=null
     }
     this.current_press++

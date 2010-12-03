@@ -56,7 +56,7 @@ function words_database()
     {
       ascii=i+97
       this._words_keys[i]=String.fromCharCode(ascii)
-      words=json[i].Content
+      words=json[i]['Content']
       this._words_values[i]=words
       this._words_descriptions[i]=words.substring(0,11)
     }

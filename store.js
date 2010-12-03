@@ -2,7 +2,7 @@ function store()
 {
   this.set_value=function(key,value)
   {
-    this.set_cookie(key,value)
+    localStorage.setItem(key, value);
   }
   this.set_cookie=function(key,value)
   {
@@ -13,7 +13,7 @@ function store()
   }
   this.get_value=function(key)
   {
-    return this.get_cookie_value(key)
+    return localStorage.getItem(key);
   }
   this.get_cookie_value=function(name)
   {
