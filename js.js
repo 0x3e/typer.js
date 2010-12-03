@@ -4,7 +4,7 @@ var store=new store()
 var typer=new typer()
 document.onkeydown=function (evt)
 {
-  console.log('d'+evt.keyCode)
+  //console.log('d'+evt.keyCode)
   //console.log('d_char'+evt.charCode)
   key=evt.keyCode
   if(typer.typing && !timers[key]){

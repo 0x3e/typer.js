@@ -30,7 +30,7 @@ function words_database()
   {
     index=this._words_keys.indexOf(ch)
     //console.log(ch)
-    console.log(index)
+    //console.log(index)
     if(index!=-1)
       return this._words_values[index]
     return false
