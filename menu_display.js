@@ -10,8 +10,9 @@ function menu_display(parent_id,words_database)
     len=this.words_database.count()
     for(i=0;i<len;i++)
     {
-    this.add_div({id:'con_label_'+i, classes:'label', inner_html:this.words_database.get_key(i)+')'})
-    this.add_div({id:'con_'+i, inner_html:this.words_database.get_description(i)})
+    this.add_div({id:'con_label_'+i, classes:'menu_label label', inner_html:this.words_database.get_key(i)+')'})
+    this.add_div({id:'con_'+i, classes:'con', inner_html:this.words_database.get_description(i)})
+    this.add_div({id:'aut_'+i, classes:'aut', inner_html:':'+this.words_database.get_author(i)})
     }
   }
 }

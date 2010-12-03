@@ -4,7 +4,7 @@ var store=new store()
 var typer=new typer()
 document.onkeydown=function (evt)
 {
-  //console.log('d'+evt.keyCode)
+  console.log('d'+evt.keyCode)
   //console.log('d_char'+evt.charCode)
   key=evt.keyCode
   if(typer.typing && !timers[key]){
@@ -12,7 +12,7 @@ document.onkeydown=function (evt)
     if (repeat!==0)
       timers[key]= setInterval('typer.key_action('+key+')', repeat)
   }
-  if(key==222||key==191)
+  if(key==222||key==191||key==32)
     return false
 }
 document.onkeypress=function (evt)

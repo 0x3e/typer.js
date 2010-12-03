@@ -6,13 +6,13 @@ function score_display(parent_id)
   {
     el = document.getElementById(this.display_parent)
     if(el) el.innerHTML=''
-    this.add_div({id:'word_label', classes:'label', inner_html:'words'})
+    this.add_div({id:'word_label', classes:'score_label label', inner_html:'words'})
     this.add_div({id:'word', inner_html:'0'})
-    this.add_div({id:'error_label', classes:'label', inner_html:'errors'})
+    this.add_div({id:'error_label', classes:'score_label label', inner_html:'errors'})
     this.add_div({id:'errors', inner_html:'0'})
     //this.add_div({id:'time_label', classes:'label', inner_html:'time'})
     //this.add_div({id:'time', inner_html:'0'})
-    this.add_div({id:'wpm_label', classes:'label', inner_html:'wpm'})
+    this.add_div({id:'wpm_label', classes:'score_label label', inner_html:'wpm'})
     this.add_div({id:'wpm', inner_html:'0'})
   }
   this.update_totals=function(ob)
@@ -29,7 +29,7 @@ function score_display(parent_id)
     el = document.getElementById('wpm')
     out=Math.floor(((ob.correct_letters/5)-ob.incorrect_letters)/(this.total_time/1000/60))
     if(out<1)
-      out='none'
+      out='nil'
     el.innerHTML=out
   }
 }

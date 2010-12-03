@@ -30,7 +30,7 @@ function words_database()
   {
     index=this._words_keys.indexOf(ch)
     //console.log(ch)
-    //console.log(index)
+    console.log(index)
     if(index!=-1)
       return this._words_values[index]
     return false
@@ -47,6 +47,10 @@ function words_database()
   {
     return this._words_descriptions[nu]
   }
+  this.get_author=function(nu)
+  {
+    return this._words_author[nu]
+  }
   this.load=function(resp_json)
   {
     //json=eval(resp_json)
@@ -57,8 +61,10 @@ function words_database()
       ascii=i+97
       this._words_keys[i]=String.fromCharCode(ascii)
       words=json[i]['Content']
+      author=json[i]['Author']
       this._words_values[i]=words
       this._words_descriptions[i]=words.substring(0,11)
+      this._words_author[i]=author
     }
   }
   this._words_keys=[
@@ -66,6 +72,8 @@ function words_database()
   this._words_values=[
   ]
   this._words_descriptions=[
+  ]
+  this._words_author=[
   ]
 }
 
