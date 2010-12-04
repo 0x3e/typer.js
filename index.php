@@ -3,7 +3,11 @@
 <head>
 <meta charset=utf-8 />
 <title>0x3e</title>
+<?php if($_REQUEST['cmp']):?>
 <link href="c.css" rel="stylesheet" type="text/css" />
+<?php else:?>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<?php endif?>
 </head>
 <body>
 <?php if($_REQUEST['cmp']):?>

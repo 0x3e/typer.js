@@ -33,14 +33,14 @@ function typer()
     if (this.context=='menu')
     {
       this.context='level'
-      store.set_value('context','level')
+      store.set('context','level')
       this.menu.bg()
       this.level.fg()
     }
     else
     {
       this.context='menu'
-      store.set_value('context','menu')
+      store.set('context','menu')
       this.level.bg()
       this.menu.fg()
     }
@@ -50,14 +50,14 @@ function typer()
     if (context=='level')
     {
       this.context='level'
-      store.set_value('context','level')
+      store.set('context','level')
       this.menu.bg()
       this.level.fg()
     }
     else
     {
       this.context='menu'
-      store.set_value('context','menu')
+      store.set('context','menu')
       this.level.bg()
       this.menu.fg()
     }
@@ -67,7 +67,7 @@ function typer()
     this.display.init()
     this.level.init()
     this.menu.init()
-    context=store.get_value('context')
+    context=store.get('context')
     //console.log(context)
     this.set_context(context)
   }

@@ -1,6 +1,6 @@
 function store()
 {
-  this.set_value=function(key,value)
+  this.set=function(key,value)
   {
     localStorage.setItem(key, value);
   }
@@ -11,7 +11,7 @@ function store()
     expires = "; expires="+d.toGMTString();
     document.cookie = key+'='+value+'; expires='+expires+' path=/'
   }
-  this.get_value=function(key)
+  this.get=function(key)
   {
     return localStorage.getItem(key);
   }

@@ -8,7 +8,7 @@ function words_database()
     //ajax.get('words_classic_texts.json',function(req_json){db.load(req_json)},false)
     word_list=new words_list
     this.load(word_list.get_list())
-    store_selection=store.get_value('word_database_selected')
+    store_selection=store.get('word_database_selected')
     if(store_selection)
       this.set_selection(store_selection)
   }
@@ -16,7 +16,7 @@ function words_database()
   {
     if(this.get_words(sel))
     {
-      store.set_value('word_database_selected',sel)
+      store.set('word_database_selected',sel)
       this._selection=sel
       return true
     }
