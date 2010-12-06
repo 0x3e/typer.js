@@ -1,4 +1,4 @@
-body{background:#eee;font-family:monospace;font-size: 22px;}
+body{background:#eee;font-family:"ProFontWindows","DejaVu Sans Mono","Bitstream Vera Sans Mono","Apple Menlo",monospace;font-size: 22px;}
 .letter{display:inline;}
 #letters_container{-moz-border-radius: 21px;border-radius: 21px;background:white;margin:1.6em auto;padding:2.6em;border: 1px solid #ddd;max-width: 32em;}
 #score_display_area{-moz-border-radius: 24px;border-radius: 24px;background:white;margin:1em auto;padding:1em 1em 1em 2em;border:1px solid #ddd;width:7.6em;}

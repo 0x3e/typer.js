@@ -18,13 +18,22 @@ function words_database()
     {
       store.set('word_database_selected',sel)
       this._selection=sel
+      this._selection_index=this._words_keys.indexOf(sel)
       return true
     }
     return false
   }
-  this.get_selected=function()
+  this.get_selected_words=function()
   {
-    return this.get_words(this._selection)
+    return this._words_values[this._selection_index]
+  }
+  this.get_selected_url=function()
+  {
+    return this._words_url[this._selection_index]
+  }
+  this.get_selection=function()
+  {
+    return this._selection
   }
   this.get_words=function(ch)
   {
@@ -51,6 +60,10 @@ function words_database()
   {
     return this._words_author[nu]
   }
+  this.get_url=function(nu)
+  {
+    return this._words_url[nu]
+  }
   this.load=function(resp_json)
   {
     //json=eval(resp_json)
@@ -60,20 +73,16 @@ function words_database()
     {
       ascii=i+97
       this._words_keys[i]=String.fromCharCode(ascii)
-      words=json[i]['Content']
-      author=json[i]['Author']
-      this._words_values[i]=words
-      this._words_descriptions[i]=words.substring(0,11)
-      this._words_author[i]=author
+      this._words_values[i]=json[i]['Content']
+      this._words_descriptions[i]=this._words_values[i].substring(0,11)
+      this._words_author[i]=json[i]['Author']
+      this._words_url[i]=json[i]['URL']
     }
   }
-  this._words_keys=[
-  ]
-  this._words_values=[
-  ]
-  this._words_descriptions=[
-  ]
-  this._words_author=[
-  ]
+  this._words_keys=[]
+  this._words_values=[]
+  this._words_descriptions=[]
+  this._words_author=[]
+  this._words_url=[]
 }
 

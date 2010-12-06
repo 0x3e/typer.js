@@ -1,13 +1,17 @@
 #!/bin/bash
 
-build_number=88
+build_number=97
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
 if [ ! -f compiler/compiler.jar ]
 then
-  echo "This quick and dirty script could use the closure compiler from google"
+  echo "Closure compiler from google missing javascript will not be compiled"
 # todo probably ask and download it here
+fi
+if [ ! -f ./csstidy/release/csstidy/csstidy ]
+then
+  echo "Csstidy missing css will not be compiled"
 fi
 
 echo "Build $build_number"
@@ -29,6 +33,7 @@ level.js \
 store.js \
 typer.js \
 js.js \
+|sed -e 's/.*console.log.*//' \
 > typer_all.js
 
 if [ -f compiler/compiler.jar ]
@@ -43,7 +48,7 @@ echo "/*$build_number*/" > /tmp/t.js && cat t.js >> /tmp/t.js && cp /tmp/t.js t.
 
 if [ -f ./csstidy/release/csstidy/csstidy ]
 then
-  echo "compressing css"
+  echo compressing css
   ./csstidy/release/csstidy/csstidy css.css --template=highest c.css | grep Compress
 else
   cp css.css c.css

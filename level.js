@@ -1,9 +1,10 @@
-function level(display,keys,words)
+function level(display,keys,words_database)
 {
   this.level_display=new level_display(display.level)
   this.score_display=new score_display(display.score)
   this.keys=keys
-  this.words=words
+  this.words_database=words_database
+  this.words=words_database.get_selected_words()
   this.current_letter=0
   this.current_press=0
   this.correct_letters=0
@@ -22,7 +23,6 @@ function level(display,keys,words)
       d=null
     }
     this.current_press++
-    //put this in the keys I think
     letter=this.words[this.current_letter]
     if(this.keys.equivalent(key_code,letter))
     {
@@ -44,7 +44,6 @@ function level(display,keys,words)
       correct_letters:this.correct_letters
       ,current_press:this.current_press
       ,incorrect_letters:this.incorrect_letters
-      ,total_time:this.total_time
       ,start_time:this.start_time
     })
   }
@@ -52,10 +51,20 @@ function level(display,keys,words)
   {
     this.update_score()
     d=new Date
-    this.total_time=d.getTime-this.start_time
+    this.total_time=d.getTime()-this.start_time
     clearInterval(this.timer)
     delete this.timer
     this.typing=false
+    new_score={
+      correct_letters:this.correct_letters
+      ,current_press:this.current_press
+      ,incorrect_letters:this.incorrect_letters
+      ,total_time:this.total_time
+      ,start_time:this.start_time
+    }
+    cur_score=store.get(this.words_database.get_selected_url())
+    store.set(this.words_database.get_selected_url(),new_score)
+    //console.log(new_score)
   }
   this.fg=function()
   {

@@ -6,7 +6,7 @@ function typer()
   this.words_database.init()
   this.display=new display('menu_display_area','level_display_area','score_display_area')
   this.menu=new menu(this.display,this.keys,this.words_database)
-  this.level=new level(this.display,this.keys,this.words_database.get_selected())
+  this.level=new level(this.display,this.keys,this.words_database)
   this.key_action=function(key_code)
   {
     if(this.keys.equivalent(key_code,'escape'))
@@ -25,7 +25,7 @@ function typer()
   this.reset_level=function()
   {
     delete(this.level)
-    this.level=new level(this.display,this.keys,this.words_database.get_selected())
+    this.level=new level(this.display,this.keys,this.words_database)
     this.level.init()
   }
   this.switch_context=function()
