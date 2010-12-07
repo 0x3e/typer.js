@@ -1,9 +1,11 @@
-function display(menu,level,score)
+function display(ob)
 {
-  this.menu=menu
-  this.level=level
-  this.score=score
-  this.display_parent='body'
+  if(ob){
+    this.menu=ob.menu
+    this.level=ob.level
+    this.score=ob.score
+    this.display_parent='body'
+  }
   this.init=function()
   {
     this.add_div({id:this.menu, classes:'menu', inner_html:'menu'})

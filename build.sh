@@ -1,6 +1,6 @@
 #!/bin/bash
 
-build_number=97
+build_number=101
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -21,6 +21,7 @@ echo "CACHE MANIFEST
 > c.m
 
 cat \
+json2.js \
 words_classic_texts.js \
 words_database.js \
 display.js \
@@ -35,6 +36,8 @@ typer.js \
 js.js \
 |sed -e 's/.*console.log.*//' \
 > typer_all.js
+
+jsl/jsl -conf jsl.conf -process typer_all.js
 
 if [ -f compiler/compiler.jar ]
 then

@@ -1,8 +1,9 @@
-function menu(display,keys,words_database)
+function menu(typer)
 {
-  this.display=new menu_display(display.menu,words_database)
-  this.keys=keys
-  this.words_database=words_database
+  this.typer=typer
+  this.display=new menu_display(typer.display.menu,typer.words_database)
+  this.keys=typer.keys
+  this.words_database=typer.words_database
   this.fg=function()
   {
     this.display.show()
@@ -17,13 +18,13 @@ function menu(display,keys,words_database)
     if(this.words_database.get_words(key_char))
     {
       this.words_database.set_selection(key_char)
-      typer.reset_level()
-      typer.switch_context('level')
+      this.typer.reset_level()
+      this.typer.switch_context('level')
     }
   }
   this.init=function()
   {
-    typer.typing=true
+    this.typer.typing=true
     this.display.init()
   }
 

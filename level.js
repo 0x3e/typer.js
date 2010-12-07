@@ -1,10 +1,11 @@
-function level(display,keys,words_database)
+function level(typer)
 {
-  this.level_display=new level_display(display.level)
-  this.score_display=new score_display(display.score)
-  this.keys=keys
-  this.words_database=words_database
-  this.words=words_database.get_selected_words()
+  this.typer=typer
+  this.level_display=new level_display(typer.display.level)
+  this.score_display=new score_display(typer.display.score)
+  this.keys=typer.keys
+  this.words_database=typer.words_database
+  this.words=typer.words_database.get_selected_words()
   this.current_letter=0
   this.current_press=0
   this.correct_letters=0
@@ -14,12 +15,12 @@ function level(display,keys,words_database)
   this.key_action=function(key_code)
   {
     //console.log(key_code)
-    if(this.keys.meta(key_code)==true)
+    if(this.keys.meta(key_code)===true)
       return
-    if(this.current_press==0){
+    if(this.current_press===0){
       d=new Date
       this.start_time=d.getTime()
-      this.timer=setInterval(function(){typer.level.update_score()},407)
+      this.timer=setInterval(function(){this.typer.level.update_score()},407)
       d=null
     }
     this.current_press++
@@ -50,36 +51,36 @@ function level(display,keys,words_database)
   this.complete=function()
   {
     this.update_score()
+    this.score_display.show()
     d=new Date
     this.total_time=d.getTime()-this.start_time
     clearInterval(this.timer)
     delete this.timer
     this.typing=false
     new_score={
-      correct_letters:this.correct_letters
-      ,current_press:this.current_press
-      ,incorrect_letters:this.incorrect_letters
-      ,total_time:this.total_time
-      ,start_time:this.start_time
+      c:this.correct_letters
+      ,e:this.incorrect_letters
+      ,t:this.total_time
+      ,h:this.start_time
     }
-    cur_score=store.get(this.words_database.get_selected_url())
-    store.set(this.words_database.get_selected_url(),new_score)
+    cur_score=JSON.parse(store.get(this.words_database.get_selected_url()))
+    console.log(cur_score)
+    store.set(this.words_database.get_selected_url(),JSON.stringify(new_score))
     //console.log(new_score)
   }
   this.fg=function()
   {
     this.level_display.show()
-    this.score_display.show()
   }
   this.bg=function()
   {
     this.level_display.hide()
-    this.score_display.hide()
   }
   this.init=function()
   {
-    typer.typing=true
+    this.typer.typing=true
     this.level_display.init(this.words)
     this.score_display.init()
+    this.score_display.hide()
   }
 }
