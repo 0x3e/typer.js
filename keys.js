@@ -1,31 +1,5 @@
-function keys()
-{
-  this.equivalent=function(key_code,letter)
-  {
-    //console.log(key_code)
-    if(this.get_char(key_code)==letter)
-      return true
-    else
-      return false
-  }
-  this.get_char=function(code)
-  {
-    if(timers[16])
-    {
-      //console.log(this.shift_char[code])
-      return this.shift_char[code]
-    }
-    else
-      return this.char_char[code]
-  }
+keys=function(){
   this._meta=[0,16,17,18,20,27]
-  this.meta=function(key_code)
-  {
-    if(this._meta.indexOf(key_code)!=-1)
-      return true
-    else
-      return false
-  }
   this.char_char=
   {
      8:'backspace'
@@ -214,4 +188,29 @@ function keys()
     ,221:'}'
     ,222:'"'
   }
+}
+keys.prototype.equivalent=function(key_code,letter)
+{
+  //console.log(key_code)
+  if(this.get_char(key_code)==letter)
+    return true
+  else
+    return false
+}
+keys.prototype.get_char=function(code)
+{
+  if(timers[16])
+  {
+    //console.log(this.shift_char[code])
+    return this.shift_char[code]
+  }
+  else
+    return this.char_char[code]
+}
+keys.prototype.meta=function(key_code)
+{
+  if(this._meta.indexOf(key_code)!=-1)
+    return true
+  else
+    return false
 }

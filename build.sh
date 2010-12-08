@@ -1,6 +1,6 @@
 #!/bin/bash
 
-build_number=101
+build_number=105
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 

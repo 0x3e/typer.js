@@ -1,4 +1,4 @@
-function level(typer)
+level=function(typer)
 {
   this.typer=typer
   this.level_display=new level_display(typer.display.level)
@@ -12,75 +12,75 @@ function level(typer)
   this.incorrect_letters=0
   this.start_time=0
   this.total_time=0
-  this.key_action=function(key_code)
-  {
-    //console.log(key_code)
-    if(this.keys.meta(key_code)===true)
-      return
-    if(this.current_press===0){
-      d=new Date
-      this.start_time=d.getTime()
-      this.timer=setInterval(function(){this.typer.level.update_score()},407)
-      d=null
-    }
-    this.current_press++
-    letter=this.words[this.current_letter]
-    if(this.keys.equivalent(key_code,letter))
-    {
-      this.correct_letters++
-      this.current_letter++
-      this.level_display.update_letters(this.current_letter)
-      if(this.current_letter==this.words.length)
-        this.complete()
-    }
-    else
-    {
-      this.incorrect_letters++
-      this.level_display.error_letter(this.current_letter)
-    }
-  }
-  this.update_score=function()
-  {
-    this.score_display.update_totals({
-      correct_letters:this.correct_letters
-      ,current_press:this.current_press
-      ,incorrect_letters:this.incorrect_letters
-      ,start_time:this.start_time
-    })
-  }
-  this.complete=function()
-  {
-    this.update_score()
-    this.score_display.show()
+}
+level.prototype.key_action=function(key_code)
+{
+  //console.log(key_code)
+  if(this.keys.meta(key_code)===true)
+    return
+  if(this.current_press===0){
     d=new Date
-    this.total_time=d.getTime()-this.start_time
-    clearInterval(this.timer)
-    delete this.timer
-    this.typing=false
-    new_score={
-      c:this.correct_letters
-      ,e:this.incorrect_letters
-      ,t:this.total_time
-      ,h:this.start_time
-    }
-    cur_score=JSON.parse(store.get(this.words_database.get_selected_url()))
-    console.log(cur_score)
-    store.set(this.words_database.get_selected_url(),JSON.stringify(new_score))
-    //console.log(new_score)
+    this.start_time=d.getTime()
+    this.timer=setInterval(function(){this.typer.level.update_score()},407)
+    d=null
   }
-  this.fg=function()
+  this.current_press++
+  letter=this.words[this.current_letter]
+  if(this.keys.equivalent(key_code,letter))
   {
-    this.level_display.show()
+    this.correct_letters++
+    this.current_letter++
+    this.level_display.update_letters(this.current_letter)
+    if(this.current_letter==this.words.length)
+      this.complete()
   }
-  this.bg=function()
+  else
   {
-    this.level_display.hide()
+    this.incorrect_letters++
+    this.level_display.error_letter(this.current_letter)
   }
-  this.init=function()
-  {
-    this.typer.typing=true
-    this.level_display.init(this.words)
-    this.score_display.init()
-    this.score_display.hide()
+}
+level.prototype.update_score=function()
+{
+  this.score_display.update_totals({
+    correct_letters:this.correct_letters
+    ,current_press:this.current_press
+    ,incorrect_letters:this.incorrect_letters
+    ,start_time:this.start_time
+  })
+}
+level.prototype.complete=function()
+{
+  this.update_score()
+  this.score_display.show()
+  d=new Date
+  this.total_time=d.getTime()-this.start_time
+  clearInterval(this.timer)
+  delete this.timer
+  this.typing=false
+  new_score={
+    c:this.correct_letters
+    ,e:this.incorrect_letters
+    ,t:this.total_time
+    ,h:this.start_time
   }
+  cur_score=JSON.parse(store.get(this.words_database.get_selected_url()))
+  console.log(cur_score)
+  store.set(this.words_database.get_selected_url(),JSON.stringify(new_score))
+  //console.log(new_score)
+}
+level.prototype.fg=function()
+{
+  this.level_display.show()
+}
+level.prototype.bg=function()
+{
+  this.level_display.hide()
+}
+level.prototype.init=function()
+{
+  this.typer.typing=true
+  this.level_display.init(this.words)
+  this.score_display.init()
+  this.score_display.hide()
 }
