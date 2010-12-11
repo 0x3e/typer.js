@@ -1,6 +1,6 @@
 #!/bin/bash
 
-build_number=110
+build_number=119
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -22,6 +22,7 @@ echo "CACHE MANIFEST
 
 cat \
 json2.js \
+score.js \
 words_classic_texts.js \
 words_database.js \
 display.js \
@@ -31,8 +32,8 @@ score_display.js \
 menu.js \
 keys.js \
 level.js \
-store.js \
 typer.js \
+store.js \
 js.js \
 |sed -e 's/.*console.log.*//' \
 > typer_all.js

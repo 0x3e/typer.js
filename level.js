@@ -22,7 +22,8 @@ level.prototype.key_action=function(key_code)
   if(this.current_press===0){
     d=new Date
     this.start_time=d.getTime()
-    this.timer=setInterval(function(){this.typer.level.update_score()},407)
+    var lev=this
+    this.timer=setInterval(function(){lev.update_score()},407)
     d=null
   }
   this.current_press++

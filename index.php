@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php if($_REQUEST['cmp']):?>
-<script type="text/javascript" src="t.js"></script>
+<script type="text/javascript" src="typer_all.js"></script>
 <?php else:?>
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="score.js"></script>
