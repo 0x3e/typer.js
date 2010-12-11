@@ -17,6 +17,8 @@ words_database.prototype.init=function()
   store_selection=store.get('word_database_selected')
   if(store_selection)
     this.set_selection(store_selection)
+  else
+    this.set_selection('a')
 }
 words_database.prototype.set_selection=function(sel)
 {

@@ -14,6 +14,7 @@
 <script type="text/javascript" src="t.js"></script>
 <?php else:?>
 <script type="text/javascript" src="json2.js"></script>
+<script type="text/javascript" src="score.js"></script>
 <script type="text/javascript" src="words_classic_texts.js"></script>
 <script type="text/javascript" src="words_database.js"></script>
 <script type="text/javascript" src="display.js"></script>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-build_number=105
+build_number=110
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -37,7 +37,10 @@ js.js \
 |sed -e 's/.*console.log.*//' \
 > typer_all.js
 
-jsl/jsl -conf jsl.conf -process typer_all.js
+if [ -f jsl/jsl ]
+then
+  jsl/jsl -conf jsl.conf -process typer_all.js
+fi
 
 if [ -f compiler/compiler.jar ]
 then

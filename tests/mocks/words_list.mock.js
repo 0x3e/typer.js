@@ -1,5 +1,4 @@
 words_list=function(){
-  
   this.list=[{
    "Title":"Title"
   ,"Author":"Author"

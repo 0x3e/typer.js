@@ -6,7 +6,7 @@ document.onkeydown=function (evt)
 {
   //console.log('d'+evt.keyCode)
   //console.log('d_char'+evt.charCode)
-  key=evt.keyCode
+  var key=evt.keyCode
   if(typer.typing && !timers[key]){
     typer.key_action(key)
     if (repeat!==0)
@@ -34,5 +34,10 @@ document.onblur=function ()
     clearInterval(timers[key])
     delete timers[key]
   }
+}
+if(window['typer']==undefined)
+{
+  window['typer']=typer
+  typer['key_action']=function(a){typer.key_action(a)}
 }
 window.onload = typer.init();

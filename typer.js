@@ -72,5 +72,3 @@ typer.prototype.init=function()
   //console.log(context)
   this.set_context(context)
 }
-window['typer']=typer
-typer['key_action']=function(a){typer.key_action(a)}

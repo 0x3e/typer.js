@@ -1,6 +1,6 @@
 require('./ttester/ttester.js')
-require('./words_list_mock.js')
-require('./store_mock.js')
+require('./mocks/words_list.mock.js')
+require('./mocks/store.mock.js')
 require('../words_database.js')
 store=new store
 a=new words_database
