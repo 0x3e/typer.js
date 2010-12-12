@@ -1,7 +1,7 @@
 require('./ttester/ttester.js')
 require('./mocks/words_list.mock.js')
 require('./mocks/store.mock.js')
-require('../words_database.js')
+require('../controller/words_database.js')
 store=new store
 t=new ttester
 //console.log(words_list)

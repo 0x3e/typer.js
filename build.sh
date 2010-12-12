@@ -1,6 +1,6 @@
 #!/bin/bash
 
-build_number=138
+build_number=140
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -21,26 +21,26 @@ echo "CACHE MANIFEST
 > c.m
 
 cat \
-json2.js \
-score.js \
-words_classic_texts.js \
-words_database.js \
-display.js \
-menu_display.js \
-level_display.js \
-score_display.js \
-menu.js \
-keys.js \
-level.js \
-typer.js \
-store.js \
+lib/json2.js \
+controller/score.js \
+model/words_classic_texts.js \
+controller/words_database.js \
+view/display.js \
+view/menu_display.js \
+view/level_display.js \
+view/score_display.js \
+controller/menu.js \
+model/keys.js \
+controller/level.js \
+controller/typer.js \
+controller/store.js \
 js.js \
 |sed -e 's/.*console.log.*//' \
 > typer_all.js
 
 if [ -f jsl/jsl ]
 then
-  jsl/jsl -conf jsl.conf -process typer_all.js
+  jsl/jsl -conf conf/jsl.conf -process typer_all.js
 fi
 
 if [ -f compiler/compiler.jar ]
@@ -48,7 +48,7 @@ then
   echo compressing javascript
   java -jar compiler/compiler.jar --js typer_all.js --js_output_file t.js --compilation_level ADVANCED_OPTIMIZATIONS 2>&1 |grep 'error(s)'
 else
-  cp typer.js t.js
+  cp typer_all.js t.js
 fi
 
 echo "/*$build_number*/" > /tmp/t.js && cat t.js >> /tmp/t.js && cp /tmp/t.js t.js

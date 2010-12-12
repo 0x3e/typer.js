@@ -3,7 +3,7 @@ require('./mocks/typer.mock.js')
 require('./mocks/level_display.mock.js')
 require('./mocks/score.mock.js')
 require('./mocks/store.mock.js')
-require('../level.js')
+require('../controller/level.js')
 store=new store
 typer=new typer
 if(process.argv[2]=='die')

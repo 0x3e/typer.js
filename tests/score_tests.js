@@ -1,7 +1,7 @@
 require('./ttester/ttester.js')
 require('./mocks/score_display.mock.js')
 require('./mocks/store.mock.js')
-require('../score.js')
+require('../controller/score.js')
 store=new store
 if(process.argv[2]=='die')
   t=new ttester('die')
