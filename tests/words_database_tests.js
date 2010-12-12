@@ -3,10 +3,12 @@ require('./mocks/words_list.mock.js')
 require('./mocks/store.mock.js')
 require('../words_database.js')
 store=new store
-a=new words_database
 t=new ttester
 //console.log(words_list)
 
+t.test("a new word database be"
+  ,function(){a=new words_database}
+)
 t.test("init ehh"
   ,function(){a.init()}
 )

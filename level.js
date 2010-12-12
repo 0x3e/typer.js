@@ -20,14 +20,14 @@ level.prototype.key_action=function(key_code)
   if(this.keys.meta(key_code)===true)
     return true
   if(this.current_press===0){
-    d=new Date
+    var d=new Date
     this.start_time=d.getTime()
     var lev=this
     this.timer=setInterval(function(){lev.update_score()},407)
     d=null
   }
   this.current_press++
-  letter=this.words[this.current_letter]
+  var letter=this.words[this.current_letter]
   if(this.keys.equivalent(key_code,letter))
   {
     this.correct_letters++
@@ -58,18 +58,19 @@ level.prototype.complete=function()
 {
   this.update_score()
   this.score.display.show()
-  d=new Date
+  var d=new Date
   this.total_time=d.getTime()-this.start_time
   clearInterval(this.timer)
   delete this.timer
   this.typing=false
-  new_score={
-    c:this.correct_letters
-  , i:this.incorrect_letters
-  , t:this.total_time
-  , s:this.start_time
+  var new_score={
+    "correct_letters":this.correct_letters
+  , "incorrect_letters":this.incorrect_letters
+  , "total_time":this.total_time
+  , "start_time":this.start_time
   }
-  this.score.update(new_score)
+  level=this.words_database.get_selected_url()
+  this.score.update(level,new_score)
   return true
 }
 level.prototype.fg=function()

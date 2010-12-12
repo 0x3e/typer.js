@@ -68,7 +68,7 @@ typer.prototype.init=function()
   this.display.init()
   this.level.init()
   this.menu.init()
-  context=store.get('context')
+  var context=store.get('context')
   //console.log(context)
   this.set_context(context)
 }

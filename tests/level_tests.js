@@ -1,7 +1,7 @@
 require('./ttester/ttester.js')
 require('./mocks/typer.mock.js')
 require('./mocks/level_display.mock.js')
-require('./mocks/score_display.mock.js')
+require('./mocks/score.mock.js')
 require('./mocks/store.mock.js')
 require('../level.js')
 store=new store
@@ -12,7 +12,7 @@ else
   t=new ttester()
 a={}
 t.test("new level be"
-, function(){a=new level(typer);}
+, function(){a=new level(typer)}
 )
 t.test("init ehh"
 , function(){return a.init()},true
