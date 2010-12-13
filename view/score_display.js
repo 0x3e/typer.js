@@ -15,21 +15,19 @@ score_display.prototype.init=function()
   //this.add_div({id:'time', inner_html:'0'})
   this.add_div({id:'wpm_label', classes:'score_label label', inner_html:'wpm'})
   this.add_div({id:'wpm', inner_html:'0'})
+  this.add_div({id:'best_wpm_label', classes:'score_label label', inner_html:'best'})
+  this.add_div({id:'best_wpm', inner_html:'0'})
 }
-score_display.prototype.update_totals=function(ob)
+score_display.prototype.update_totals=function(tot,correct,errors,wpm,best)
 {
-  d=new Date
-  this.total_time=d.getTime()-ob.start_time
-  //el = document.getElementById('time')
-  //el.innerHTML=Math.floor(this.total_time/1000)+'.'+Math.ceil(this.total_time/100)%10
-  d=null
   el = document.getElementById('word')
-  el.innerHTML=Math.round(ob.correct_letters/5)
+  el.innerHTML=Math.round(correct/5)
   el = document.getElementById('errors')
-  el.innerHTML=ob.incorrect_letters
+  el.innerHTML=errors
   el = document.getElementById('wpm')
-  out=Math.floor(((ob.correct_letters/5)-ob.incorrect_letters)/(this.total_time/1000/60))
-  if(out<1)
-    out='nil'
-  el.innerHTML=out
+  if(wpm<1)
+    wpm='nil'
+  el.innerHTML=wpm
+  el = document.getElementById('best_wpm')
+  el.innerHTML=best
 }

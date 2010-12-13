@@ -13,28 +13,28 @@ t.test("new score be"
 , function(){a=new score('display_parent')}
 )
 new_score={
-  "correct_letters":'1'
-, "incorrect_letters":'0'
-, "total_time":'1'
-, "start_time":'1'
+  "c":'1'
+, "i":'0'
+, "t":'1'
+, "s":'1'
 }
 t.test("update score"
 , function(){return a.update('http://test.test/1',new_score)},true
 )
 new_score={
-  "correct_letters":'1'
-, "incorrect_letters":'0'
-, "total_time":'1'
-, "start_time":'2'
+  "c":'1'
+, "i":'0'
+, "t":'1'
+, "s":'2'
 }
 t.test("update score"
 , function(){return a.update('http://test.test/1',new_score)},true
 )
 new_score={
-  "correct_letters":'1'
-, "incorrect_letters":'0'
-, "total_time":'1'
-, "start_time":'3'
+  "c":'1'
+, "i":'0'
+, "t":'1'
+, "s":'3'
 }
 t.test("update score"
 , function(){return a.update('http://test.test/2',new_score)}, true

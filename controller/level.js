@@ -23,7 +23,6 @@ level.prototype.key_action=function(key_code)
     var d=new Date
     this.start_time=d.getTime()
     var lev=this
-    this.timer=setInterval(function(){lev.update_score()},407)
     d=null
   }
   this.current_press++
@@ -44,33 +43,29 @@ level.prototype.key_action=function(key_code)
   }
   return false
 }
-level.prototype.update_score=function()
-{
-  this.score.display.update_totals({
-    correct_letters:this.correct_letters
-  , current_press:this.current_press
-  , incorrect_letters:this.incorrect_letters
-  , start_time:this.start_time
-  })
-  return true
-}
 level.prototype.complete=function()
 {
-  this.update_score()
-  this.score.display.show()
   var d=new Date
   this.total_time=d.getTime()-this.start_time
-  clearInterval(this.timer)
-  delete this.timer
   this.typing=false
   var new_score={
-    "correct_letters":this.correct_letters
-  , "incorrect_letters":this.incorrect_letters
-  , "total_time":this.total_time
-  , "start_time":this.start_time
+    "c":this.correct_letters
+  , "i":this.incorrect_letters
+  , "t":this.total_time
+  , "s":this.start_time
   }
   level=this.words_database.get_selected_url()
   this.score.update(level,new_score)
+  var best=this.score.get_best(level)
+  var wpm=this.score.calculate_wpm(new_score)
+  this.score.display.update_totals(
+     this.total_time
+    ,this.correct_letters
+    ,this.incorrect_letters
+    ,wpm
+    ,best
+  )
+  this.score.display.show()
   return true
 }
 level.prototype.fg=function()

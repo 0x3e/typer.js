@@ -6,6 +6,7 @@ do
   fails=$(echo "$out"|grep '^FAIL')
   if [ -n "$fails" ]
   then
+    echo "FAIL $test"
     fails_occured=true
   fi
   if [  "$1" = "-v" ]
