@@ -6,7 +6,7 @@ require('./mocks/store.mock.js')
 require('../controller/level.js')
 store=new store
 typer=new typer
-if(process.argv[2]=='die')
+if(process.argv[2]==='die')
   t=new ttester('die')
 else
   t=new ttester()

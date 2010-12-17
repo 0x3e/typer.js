@@ -3,7 +3,7 @@ var document={}
 var localStorage={}
 
 ttester=function(die){
-  if(die=="die")
+  if(die==="die")
     this.fail_hard=true
   else
     this.fail_hard=false
@@ -36,12 +36,12 @@ ttester.prototype.run_fun=function(desc,fun,expected_res,detail)
     console.log("PASS: "+desc)
     return true
   }
-  if(expected_res.constructor == Array)
+  if(expected_res.constructor===Array)
   {
     expected_res=JSON.stringify(expected_res)
     res=JSON.stringify(res)
   }
-  if(expected_res==res)
+  if(expected_res===res)
     console.log("PASS: "+desc)
   else
     console.log("FAIL: "+desc)

@@ -192,7 +192,7 @@ keys=function(){
 keys.prototype.equivalent=function(key_code,letter)
 {
   //console.log(key_code)
-  if(this.get_char(key_code)==letter)
+  if(this.get_char(key_code)===letter)
     return true
   else
     return false

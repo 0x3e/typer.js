@@ -12,7 +12,7 @@ document.onkeydown=function (evt)
     if (repeat!==0)
       timers[key]= setInterval('typer.key_action('+key+')', repeat)
   }
-  if(key==222||key==191||key==32)
+  if(key===222||key===191||key===32)
     return false
 }
 document.onkeypress=function (evt)
@@ -35,7 +35,7 @@ document.onblur=function ()
     delete timers[key]
   }
 }
-if(window['typer']==undefined)
+if(window['typer']===undefined)
 {
   window['typer']=typer
   typer['key_action']=function(a){typer.key_action(a)}

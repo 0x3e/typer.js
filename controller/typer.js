@@ -16,9 +16,9 @@ typer.prototype.key_action=function(key_code)
     return
   }
   //console.log(key_code)
-  if(this.context=='menu')
+  if(this.context==='menu')
     this.menu.key_action(key_code)
-  else if(this.context=='level')
+  else if(this.context==='level')
     this.level.key_action(key_code)
   else
     this.switch_context('menu')
@@ -31,7 +31,7 @@ typer.prototype.reset_level=function()
 }
 typer.prototype.switch_context=function()
 {
-  if (this.context=='menu')
+  if (this.context==='menu')
   {
     this.context='level'
     store.set('context','level')
@@ -48,7 +48,7 @@ typer.prototype.switch_context=function()
 }
 typer.prototype.set_context=function(context)
 {
-  if (context=='level')
+  if (context==='level')
   {
     this.context='level'
     store.set('context','level')

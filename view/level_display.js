@@ -16,11 +16,11 @@ level_display.prototype.load_letters=function(chars)
   this.add_div({id:'letters_container'})
   letters_in_current_words=chars.length
   for(i=0;i<letters_in_current_words;i++){
-    if(chars[i]=='\n')
+    if(chars[i]==='\n')
     {
       this.add_span({parent:'letters_container', id:'l'+i,classes:"newline letter",inner_html:chars[i]})
     }
-    else if(chars[i]==' ')
+    else if(chars[i]===' ')
     {
       this.add_span({parent:'letters_container', id:'l'+i,classes:"space letter",inner_html:chars[i]})
       this.add_span({parent:'letters_container', id:'i'+i,classes:"inspace ",inner_html:chars[i]})

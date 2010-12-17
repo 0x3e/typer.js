@@ -5,10 +5,10 @@ score=function(display_parent,words_database)
 score.prototype.update=function(key,score)
 {
   if(
-      score['c']==undefined
-    ||score['i']==undefined
-    ||score['t']==undefined
-    ||score['s']==undefined
+      score['c']===undefined
+    ||score['i']===undefined
+    ||score['t']===undefined
+    ||score['s']===undefined
   )
     return false
   var level_scores=this.get_level_scores(key)

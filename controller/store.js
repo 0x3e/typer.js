@@ -25,7 +25,7 @@ store.prototype.get_cookie_value=function(name)
   {
     split_keys=split_values[i].split("=")
     split_keys[0]=split_keys[0].replace(/^ /,"")
-    if(split_keys[0]==name) return split_keys[1]
+    if(split_keys[0]===name) return split_keys[1]
   }
   return ""
 }

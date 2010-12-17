@@ -3,7 +3,7 @@ require('./mocks/score_display.mock.js')
 require('./mocks/store.mock.js')
 require('../controller/score.js')
 store=new store
-if(process.argv[2]=='die')
+if(process.argv[2]==='die')
   t=new ttester('die')
 else
   t=new ttester()

@@ -15,7 +15,7 @@ level=function(typer)
 }
 level.prototype.key_action=function(key_code)
 {
-  if(key_code==undefined)
+  if(key_code===undefined)
     return false
   if(this.keys.meta(key_code)===true)
     return true
@@ -32,7 +32,7 @@ level.prototype.key_action=function(key_code)
     this.correct_letters++
     this.current_letter++
     this.level_display.update_letters(this.current_letter)
-    if(this.current_letter==this.words.length)
+    if(this.current_letter===this.words.length)
       this.complete()
     return true
   }
