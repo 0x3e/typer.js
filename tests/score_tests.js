@@ -39,3 +39,15 @@ new_score={
 t.test("update score"
 , function(){return a.update('http://test.test/2',new_score)}, true
 )
+level_scores=[ { c: '1', i: '0', t: '1', s: '1' }
+, { c: '1', i: '0', t: '1', s: '2' }
+]
+t.test("get level scores"
+, function(){return a.get_level_scores('http://test.test/1')},level_scores
+)
+t.test("get best score no level"
+, function(){return a.get_best()}, false
+)
+t.test("get best score"
+, function(){return a.get_best('http://test.test/1')}, 12000
+)
