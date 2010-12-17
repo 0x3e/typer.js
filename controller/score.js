@@ -26,7 +26,9 @@ score.prototype.get_level_scores=function(key)
     try{level_scores=JSON.parse(level_scores)}
     catch(e){level_scores=[]}
   }
-  return level_scores
+  if(level_scores)
+    return level_scores
+  return false
 }
 score.prototype.get_best=function(key)
 {
@@ -36,10 +38,11 @@ score.prototype.get_best=function(key)
   {
     score=level_scores[i]
     wpm=this.calculate_wpm(score)
-    console.log(wpm)
     if(wpm>best_wpm) best_wpm=wpm
   }
-  return best_wpm
+  if(best_wpm)
+    return best_wpm
+  return false
 }
 score.prototype.calculate_wpm=function(ob)
 {
