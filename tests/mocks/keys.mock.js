@@ -1,3 +1,3 @@
-keys=function(){
+Keys=function(){
 }
-keys.prototype.meta=function(ch){return false;}
+Keys.prototype.meta=function(ch){return false;}

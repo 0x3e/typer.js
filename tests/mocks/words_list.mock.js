@@ -1,4 +1,4 @@
-words_list=function(){
+Words_List=function(){
   this.list=[{
    "Title":"Title"
   ,"Author":"Author"
@@ -8,4 +8,4 @@ words_list=function(){
   ,"Content": "content"
   }]
 }
-words_list.prototype.get_list=function(){return this.list}
+Words_List.prototype.get_list=function(){return this.list}

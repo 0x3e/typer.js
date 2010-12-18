@@ -1,14 +1,17 @@
-typer=function()
+/**
+ * @constructor
+*/
+Typer=function()
 {
   this.context='menu'
-  this.keys=new keys()
-  this.words_database=new words_database()
+  this.keys=new Keys()
+  this.words_database=new Words_Database()
   this.words_database.init()
-  this.display=new display({menu:'menu_display_area',level:'level_display_area',score:'score_display_area'})
-  this.menu=new menu(this)
-  this.level=new level(this)
+  this.display=new Display({menu:'menu_display_area',level:'level_display_area',score:'score_display_area'})
+  this.menu=new Menu(this)
+  this.level=new Level(this)
 }
-typer.prototype.key_action=function(key_code)
+Typer.prototype.key_action=function(key_code)
 {
   if(this.keys.equivalent(key_code,'escape'))
   {
@@ -23,13 +26,13 @@ typer.prototype.key_action=function(key_code)
   else
     this.switch_context('menu')
 }
-typer.prototype.reset_level=function()
+Typer.prototype.reset_level=function()
 {
   delete(this.level)
-  this.level=new level(this)
+  this.level=new Level(this)
   this.level.init()
 }
-typer.prototype.switch_context=function()
+Typer.prototype.switch_context=function()
 {
   if (this.context==='menu')
   {
@@ -46,7 +49,7 @@ typer.prototype.switch_context=function()
     this.menu.fg()
   }
 }
-typer.prototype.set_context=function(context)
+Typer.prototype.set_context=function(context)
 {
   if (context==='level')
   {
@@ -63,7 +66,7 @@ typer.prototype.set_context=function(context)
     this.menu.fg()
   }
 }
-typer.prototype.init=function()
+Typer.prototype.init=function()
 {
   this.display.init()
   this.level.init()

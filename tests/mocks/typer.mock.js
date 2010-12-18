@@ -1,4 +1,4 @@
-typer=function()
+Typer=function()
 {
   this.display={menu:'menu_display_area',level:'level_display_area',score:'score_display_area'}
   this.words_database={}

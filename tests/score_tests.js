@@ -2,15 +2,15 @@ require('./ttester/ttester.js')
 require('./mocks/score_display.mock.js')
 require('./mocks/store.mock.js')
 require('../controller/score.js')
-store=new store
+store=new Store
 if(process.argv[2]==='die')
-  t=new ttester('die')
+  t=new Ttester('die')
 else
-  t=new ttester()
+  t=new Ttester()
 a={}
 
 t.test("new score be"
-, function(){a=new score('display_parent')}
+, function(){a=new Score('display_parent')}
 )
 new_score={
   "c":'1'

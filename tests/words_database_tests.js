@@ -2,12 +2,12 @@ require('./ttester/ttester.js')
 require('./mocks/words_list.mock.js')
 require('./mocks/store.mock.js')
 require('../controller/words_database.js')
-store=new store
-t=new ttester
+store=new Store
+t=new Ttester
 //console.log(words_list)
 
 t.test("a new word database be"
-  ,function(){a=new words_database}
+  ,function(){a=new Words_Database}
 )
 t.test("init ehh"
   ,function(){a.init()}

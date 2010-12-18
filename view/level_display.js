@@ -1,16 +1,19 @@
-level_display=function(display_parent)
+/**
+ * @constructor
+*/
+Level_Display=function(display_parent)
 {
   this.display_parent=display_parent
   this.errors=[]
 }
-level_display.prototype=new display()
-level_display.prototype.init=function(chars)
+Level_Display.prototype=new Display()
+Level_Display.prototype.init=function(chars)
 {
   el = document.getElementById(this.display_parent)
   if(el) el.innerHTML=''
   this.load_letters(chars)
 }
-level_display.prototype.load_letters=function(chars)
+Level_Display.prototype.load_letters=function(chars)
 {
  //console.log(chars)
   this.add_div({id:'letters_container'})
@@ -33,7 +36,7 @@ level_display.prototype.load_letters=function(chars)
   el = document.getElementById('l0')
   el.className=el.className+' next'
 }
-level_display.prototype.update_letters=function(letter_index)
+Level_Display.prototype.update_letters=function(letter_index)
 {
   el = document.getElementById('l'+(letter_index-1))
   el.className=el.className.replace(/next/, '')
@@ -41,7 +44,7 @@ level_display.prototype.update_letters=function(letter_index)
   el = document.getElementById('l'+letter_index)
   if(el) el.className=el.className+' next'
 }
-level_display.prototype.error_letter=function(letter_index)
+Level_Display.prototype.error_letter=function(letter_index)
 {
   if(isNaN(this.errors[letter_index]))
     this.errors[letter_index]=1

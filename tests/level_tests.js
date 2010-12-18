@@ -4,15 +4,15 @@ require('./mocks/level_display.mock.js')
 require('./mocks/score.mock.js')
 require('./mocks/store.mock.js')
 require('../controller/level.js')
-store=new store
-typer=new typer
+store=new Store
+typer=new Typer
 if(process.argv[2]==='die')
-  t=new ttester('die')
+  t=new Ttester('die')
 else
-  t=new ttester()
+  t=new Ttester()
 a={}
 t.test("new level be"
-, function(){a=new level(typer)}
+, function(){a=new Level(typer)}
 )
 t.test("init ehh"
 , function(){return a.init()},true

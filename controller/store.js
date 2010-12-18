@@ -1,21 +1,24 @@
-store=function()
+/**
+ * @constructor
+*/
+Store=function()
 {}
-store.prototype.set=function(key,value)
+Store.prototype.set=function(key,value)
 {
   localStorage.setItem(key, value);
 }
-store.prototype.set_cookie=function(key,value)
+Store.prototype.set_cookie=function(key,value)
 {
   d = new Date();
   d.setTime(d.getTime()+(365*24*60*60*1000));
   expires = "; expires="+d.toGMTString();
   document.cookie = key+'='+value+'; expires='+expires+' path=/'
 }
-store.prototype.get=function(key)
+Store.prototype.get=function(key)
 {
   return localStorage.getItem(key);
 }
-store.prototype.get_cookie_value=function(name)
+Store.prototype.get_cookie_value=function(name)
 {
   cookie=document.cookie
   i=0

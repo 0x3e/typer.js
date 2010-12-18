@@ -1,6 +1,9 @@
-ajax=function()
+/**
+ * @constructor
+*/
+Ajax=function()
 {}
-ajax.prototype.get=function(url,callback,async)
+Ajax.prototype.get=function(url,callback,async)
 {
   xmlhttp=new XMLHttpRequest()
   xmlhttp.onreadystatechange=function()

@@ -1,9 +1,12 @@
-score_display=function(parent_id)
+/**
+ * @constructor
+*/
+Score_Display=function(parent_id)
 {
   this.display_parent=parent_id
 }
-score_display.prototype = new display()
-score_display.prototype.init=function()
+Score_Display.prototype = new Display()
+Score_Display.prototype.init=function()
 {
   el = document.getElementById(this.display_parent)
   if(el) el.innerHTML=''
@@ -18,7 +21,7 @@ score_display.prototype.init=function()
   this.add_div({id:'best_wpm_label', classes:'score_label label', inner_html:'best'})
   this.add_div({id:'best_wpm', inner_html:'0'})
 }
-score_display.prototype.update_totals=function(tot,correct,errors,wpm,best)
+Score_Display.prototype.update_totals=function(tot,correct,errors,wpm,best)
 {
   el = document.getElementById('word')
   el.innerHTML=Math.round(correct/5)

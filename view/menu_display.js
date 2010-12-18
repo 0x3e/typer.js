@@ -1,10 +1,13 @@
-menu_display=function(parent_id,words_database)
+/**
+ * @constructor
+*/
+Menu_Display=function(parent_id,words_database)
 {
   this.display_parent=parent_id
   this.words_database=words_database
 }
-menu_display.prototype = new display()
-menu_display.prototype.init=function()
+Menu_Display.prototype = new Display()
+Menu_Display.prototype.init=function()
 {
   el = document.getElementById(this.display_parent)
   if(el) el.innerHTML=''

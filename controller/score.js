@@ -1,8 +1,11 @@
-score=function(display_parent,words_database)
+/**
+ * @constructor
+*/
+Score=function(display_parent,words_database)
 {
-  this.display=new score_display(display_parent)
+  this.display=new Score_Display(display_parent)
 }
-score.prototype.update=function(key,score)
+Score.prototype.update=function(key,score)
 {
   if(
       score['c']===undefined
@@ -18,7 +21,7 @@ score.prototype.update=function(key,score)
   if(key) store.set(key,score_ob)
   return true
 }
-score.prototype.get_level_scores=function(key)
+Score.prototype.get_level_scores=function(key)
 {
   var level_scores=store.get(key)
   if(level_scores)
@@ -30,7 +33,7 @@ score.prototype.get_level_scores=function(key)
     return level_scores
   return false
 }
-score.prototype.get_best=function(key)
+Score.prototype.get_best=function(key)
 {
   var level_scores=this.get_level_scores(key)
   var best_wpm=0;
@@ -44,7 +47,7 @@ score.prototype.get_best=function(key)
     return best_wpm
   return false
 }
-score.prototype.calculate_wpm=function(ob)
+Score.prototype.calculate_wpm=function(ob)
 {
   return Math.floor(((ob['c']/5)-ob['i'])/(ob['t']/1000/60))
 }

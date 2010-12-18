@@ -1,7 +1,7 @@
 var timers=[]
 var repeat=250
-var store=new store()
-var typer=new typer()
+var store=new Store()
+var typer=new Typer()
 document.onkeydown=function (evt)
 {
   //console.log('d'+evt.keyCode)
@@ -22,7 +22,7 @@ document.onkeypress=function (evt)
 }
 document.onkeyup=function (evt)
 {
-  key=evt.keyCode
+  var key=evt.keyCode
   //console.log('u'+key)
   if (timers[key]!==null)
     clearInterval(timers[key])
@@ -30,7 +30,7 @@ document.onkeyup=function (evt)
 }
 document.onblur=function ()
 {
-  for(key in timers){
+  for(var key in timers){
     clearInterval(timers[key])
     delete timers[key]
   }

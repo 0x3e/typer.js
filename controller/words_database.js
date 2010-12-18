@@ -1,4 +1,7 @@
-words_database=function()
+/**
+ * @constructor
+*/
+Words_Database=function()
 {
   this._selection='a'
   this._words_keys=[]
@@ -7,12 +10,12 @@ words_database=function()
   this._words_author=[]
   this._words_url=[]
 }
-words_database.prototype.init=function()
+Words_Database.prototype.init=function()
 {
   //db=this
   //ajax=new ajax
   //ajax.get('words_classic_texts.json',function(req_json){db.load(req_json)},false)
-  word_list=new words_list
+  word_list=new Words_List
   this.load(word_list.get_list())
   store_selection=store.get('word_database_selected')
   if(store_selection)
@@ -20,7 +23,7 @@ words_database.prototype.init=function()
   else
     this.set_selection('a')
 }
-words_database.prototype.set_selection=function(sel)
+Words_Database.prototype.set_selection=function(sel)
 {
   if(this.get_words(sel))
   {
@@ -31,19 +34,19 @@ words_database.prototype.set_selection=function(sel)
   }
   return false
 }
-words_database.prototype.get_selected_words=function()
+Words_Database.prototype.get_selected_words=function()
 {
   return this._words_values[this._selection_index]
 }
-words_database.prototype.get_selected_url=function()
+Words_Database.prototype.get_selected_url=function()
 {
   return this._words_url[this._selection_index]
 }
-words_database.prototype.get_selection=function()
+Words_Database.prototype.get_selection=function()
 {
   return this._selection
 }
-words_database.prototype.get_words=function(ch)
+Words_Database.prototype.get_words=function(ch)
 {
   index=this._words_keys.indexOf(ch)
   //console.log(ch)
@@ -52,27 +55,27 @@ words_database.prototype.get_words=function(ch)
     return this._words_values[index]
   return false
 }
-words_database.prototype.count=function()
+Words_Database.prototype.count=function()
 {
   return this._words_keys.length
 }
-words_database.prototype.get_key=function(nu)
+Words_Database.prototype.get_key=function(nu)
 {
   return this._words_keys[nu]
 }
-words_database.prototype.get_description=function(nu)
+Words_Database.prototype.get_description=function(nu)
 {
   return this._words_descriptions[nu]
 }
-words_database.prototype.get_author=function(nu)
+Words_Database.prototype.get_author=function(nu)
 {
   return this._words_author[nu]
 }
-words_database.prototype.get_url=function(nu)
+Words_Database.prototype.get_url=function(nu)
 {
   return this._words_url[nu]
 }
-words_database.prototype.load=function(resp_json)
+Words_Database.prototype.load=function(resp_json)
 {
   //json=eval(resp_json)
   json=resp_json

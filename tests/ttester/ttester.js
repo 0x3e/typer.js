@@ -2,13 +2,13 @@ var window={}
 var document={}
 var localStorage={}
 
-ttester=function(die){
+Ttester=function(die){
   if(die==="die")
     this.fail_hard=true
   else
     this.fail_hard=false
 }
-ttester.prototype.test=function(desc,fun,expected_res,detail)
+Ttester.prototype.test=function(desc,fun,expected_res,detail)
 {
   if(this.fail_hard)
   {
@@ -26,7 +26,7 @@ ttester.prototype.test=function(desc,fun,expected_res,detail)
     }
   }
 }
-ttester.prototype.run_fun=function(desc,fun,expected_res,detail)
+Ttester.prototype.run_fun=function(desc,fun,expected_res,detail)
 {
   res=fun()
   if(detail)

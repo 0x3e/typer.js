@@ -1,19 +1,22 @@
-menu=function(typer)
+/**
+ * @constructor
+*/
+Menu=function(typer)
 {
   this.typer=typer
-  this.display=new menu_display(typer.display.menu,typer.words_database)
+  this.display=new Menu_Display(typer.display.menu,typer.words_database)
   this.keys=typer.keys
   this.words_database=typer.words_database
 }
-menu.prototype.fg=function()
+Menu.prototype.fg=function()
 {
   this.display.show()
 }
-menu.prototype.bg=function()
+Menu.prototype.bg=function()
 {
   this.display.hide()
 }
-menu.prototype.key_action=function(key_code)
+Menu.prototype.key_action=function(key_code)
 {
   key_char=this.keys.get_char(key_code)
   if(this.words_database.get_words(key_char))
@@ -23,7 +26,7 @@ menu.prototype.key_action=function(key_code)
     this.typer.switch_context('level')
   }
 }
-menu.prototype.init=function()
+Menu.prototype.init=function()
 {
   this.typer.typing=true
   this.display.init()

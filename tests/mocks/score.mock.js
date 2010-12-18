@@ -1,4 +1,4 @@
-score=function(parent_id,words_database)
+Score=function(parent_id,words_database)
 {
   this.display_parent=parent_id
   this.update=function(){return {}}

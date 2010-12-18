@@ -1,10 +1,13 @@
-level=function(typer)
+/**
+ * @constructor
+*/
+Level=function(typer)
 {
   this.typer=typer
-  this.level_display=new level_display(typer.display.level)
+  this.level_display=new Level_Display(typer.display.level)
   this.keys=typer.keys
   this.words_database=typer.words_database
-  this.score=new score(typer.display.score,this.words_database)
+  this.score=new Score(typer.display.score,this.words_database)
   this.words=typer.words_database.get_selected_words()
   this.current_letter=0
   this.current_press=0
@@ -13,7 +16,7 @@ level=function(typer)
   this.start_time=0
   this.total_time=0
 }
-level.prototype.key_action=function(key_code)
+Level.prototype.key_action=function(key_code)
 {
   if(key_code===undefined)
     return false
@@ -43,7 +46,7 @@ level.prototype.key_action=function(key_code)
   }
   return false
 }
-level.prototype.complete=function()
+Level.prototype.complete=function()
 {
   var d=new Date
   this.total_time=d.getTime()-this.start_time
@@ -68,15 +71,15 @@ level.prototype.complete=function()
   this.score.display.show()
   return true
 }
-level.prototype.fg=function()
+Level.prototype.fg=function()
 {
   return this.level_display.show()
 }
-level.prototype.bg=function()
+Level.prototype.bg=function()
 {
   return this.level_display.hide()
 }
-level.prototype.init=function()
+Level.prototype.init=function()
 {
   this.typer.typing=true
   this.level_display.init(this.words)
