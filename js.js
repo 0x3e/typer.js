@@ -1,7 +1,7 @@
 var timers=[]
 var repeat=250
 var store=new Store()
-var typer=new Typer()
+var typer=new Typer(timers)
 document.onkeydown=function (evt)
 {
   //console.log('d'+evt.keyCode)

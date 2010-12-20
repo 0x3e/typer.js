@@ -1,10 +1,10 @@
 /**
  * @constructor
 */
-Typer=function()
+Typer=function(timers)
 {
   this.context='menu'
-  this.keys=new Keys()
+  this.keys=new Keys(timers)
   this.words_database=new Words_Database()
   this.words_database.init()
   this.display=new Display({menu:'menu_display_area',level:'level_display_area',score:'score_display_area'})

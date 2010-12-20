@@ -1,7 +1,8 @@
 /**
  * @constructor
 */
-Keys=function(){
+Keys=function(timers){
+  this.timers=timers
   this._meta=[0,16,17,18,20,27]
   this.char_char=
   {
@@ -202,7 +203,7 @@ Keys.prototype.equivalent=function(key_code,letter)
 }
 Keys.prototype.get_char=function(code)
 {
-  if(window.timers[16])
+  if(this.timers[16])
   {
     //console.log(this.shift_char[code])
     return this.shift_char[code]
