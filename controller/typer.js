@@ -1,8 +1,13 @@
 /**
  * @constructor
 */
-Typer=function(timers)
+Typer=function(parent_ob)
 {
+  this.repeat=250
+  var repeat=this.repeat
+  this.timers=[]
+  var timers=this.timers
+  var that=this
   this.context='menu'
   this.keys=new Keys(timers)
   this.words_database=new Words_Database()
@@ -10,6 +15,40 @@ Typer=function(timers)
   this.display=new Display({menu:'menu_display_area',level:'level_display_area',score:'score_display_area'})
   this.menu=new Menu(this)
   this.level=new Level(this)
+
+  parent_ob.onkeydown=function (evt)
+  {
+    //console.log('d'+evt.keyCode)
+    //console.log('d_char'+evt.charCode)
+    var key=evt.keyCode
+    if(that.typing && !timers[key]){
+      that.key_action(key)
+      if (repeat!==0)
+        timers[key]= setInterval('typer.key_action('+key+')', repeat)
+    }
+    if(key===222||key===191||key===32)
+      return false
+  }
+  parent_ob.onkeypress=function (evt)
+  {
+    //console.log('press'+evt.keyCode)
+    //console.log('press_char'+evt.charCode)
+  }
+  parent_ob.onkeyup=function (evt)
+  {
+    var key=evt.keyCode
+    //console.log('u'+key)
+    if (timers[key]!==null)
+      clearInterval(timers[key])
+    delete timers[key]
+  }
+  parent_ob.onblur=function ()
+  {
+    for(var key in timers){
+      clearInterval(timers[key])
+      delete timers[key]
+    }
+  }
 }
 Typer.prototype.key_action=function(key_code)
 {
