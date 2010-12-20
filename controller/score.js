@@ -37,7 +37,7 @@ Score.prototype.get_best=function(key)
 {
   var level_scores=this.get_level_scores(key)
   var best_wpm=0;
-  var i,ii,score,wpm,best_wpm
+  var i,ii,score,wpm
   for(i=0,ii=level_scores.length;i<ii;i++)
   {
     score=level_scores[i]
