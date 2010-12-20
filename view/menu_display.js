@@ -9,10 +9,11 @@ Menu_Display=function(parent_id,words_database)
 Menu_Display.prototype = new Display()
 Menu_Display.prototype.init=function()
 {
-  el = document.getElementById(this.display_parent)
+  var el = document.getElementById(this.display_parent)
+  var len
   if(el) el.innerHTML=''
-  len=this.words_database.count()
-  for(i=0;i<len;i++)
+    len=this.words_database.count()
+  for(var i=0;i<len;i++)
   {
   this.add_div({id:'con_label_'+i, classes:'menu_label label', inner_html:this.words_database.get_key(i)+')'})
   this.add_div({id:'con_'+i, classes:'con', inner_html:this.words_database.get_description(i)})

@@ -28,7 +28,8 @@ Display.prototype.add_span=function(ob)
 }
 Display.prototype.add_element=function(ob)
 {
-  div = document.createElement(ob.element)
+  var div = document.createElement(ob.element)
+  var el
   div.id=ob.id
   if(ob.classes)
     div.className=ob.classes
@@ -47,11 +48,11 @@ Display.prototype.add_element=function(ob)
 }
 Display.prototype.hide=function()
 {
-  el = document.getElementById(this.display_parent)
+  var el = document.getElementById(this.display_parent)
   if(el) el.style.display = 'none';
 }
 Display.prototype.show=function()
 {
-  el = document.getElementById(this.display_parent)
+  var el = document.getElementById(this.display_parent)
   if(el) el.style.display = 'block';
 }

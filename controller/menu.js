@@ -18,7 +18,7 @@ Menu.prototype.bg=function()
 }
 Menu.prototype.key_action=function(key_code)
 {
-  key_char=this.keys.get_char(key_code)
+  var key_char=this.keys.get_char(key_code)
   if(this.words_database.get_words(key_char))
   {
     this.words_database.set_selection(key_char)

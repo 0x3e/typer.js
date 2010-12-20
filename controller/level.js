@@ -48,6 +48,7 @@ Level.prototype.key_action=function(key_code)
 }
 Level.prototype.complete=function()
 {
+  var level
   var d=new Date
   this.total_time=d.getTime()-this.start_time
   this.typing=false

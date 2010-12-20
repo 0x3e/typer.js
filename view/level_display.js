@@ -9,16 +9,17 @@ Level_Display=function(display_parent)
 Level_Display.prototype=new Display()
 Level_Display.prototype.init=function(chars)
 {
-  el = document.getElementById(this.display_parent)
+  var el = document.getElementById(this.display_parent)
   if(el) el.innerHTML=''
   this.load_letters(chars)
 }
 Level_Display.prototype.load_letters=function(chars)
 {
+  var el
  //console.log(chars)
   this.add_div({id:'letters_container'})
-  letters_in_current_words=chars.length
-  for(i=0;i<letters_in_current_words;i++){
+  var letters_in_current_words=chars.length
+  for(var i=0;i<letters_in_current_words;i++){
     if(chars[i]==='\n')
     {
       this.add_span({parent:'letters_container', id:'l'+i,classes:"newline letter",inner_html:chars[i]})
@@ -38,7 +39,7 @@ Level_Display.prototype.load_letters=function(chars)
 }
 Level_Display.prototype.update_letters=function(letter_index)
 {
-  el = document.getElementById('l'+(letter_index-1))
+  var el = document.getElementById('l'+(letter_index-1))
   el.className=el.className.replace(/next/, '')
   el.className=el.className+' done'
   el = document.getElementById('l'+letter_index)
@@ -46,6 +47,7 @@ Level_Display.prototype.update_letters=function(letter_index)
 }
 Level_Display.prototype.error_letter=function(letter_index)
 {
+  var el
   if(isNaN(this.errors[letter_index]))
     this.errors[letter_index]=1
   else if(this.errors[letter_index]<5)

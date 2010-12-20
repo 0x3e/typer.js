@@ -8,7 +8,7 @@ Score_Display=function(parent_id)
 Score_Display.prototype = new Display()
 Score_Display.prototype.init=function()
 {
-  el = document.getElementById(this.display_parent)
+  var el = document.getElementById(this.display_parent)
   if(el) el.innerHTML=''
   this.add_div({id:'word_label', classes:'score_label label', inner_html:'words'})
   this.add_div({id:'word', inner_html:'0'})
@@ -23,7 +23,7 @@ Score_Display.prototype.init=function()
 }
 Score_Display.prototype.update_totals=function(tot,correct,errors,wpm,best)
 {
-  el = document.getElementById('word')
+  var el = document.getElementById('word')
   el.innerHTML=Math.round(correct/5)
   el = document.getElementById('errors')
   el.innerHTML=errors

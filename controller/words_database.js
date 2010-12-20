@@ -12,6 +12,7 @@ Words_Database=function()
 }
 Words_Database.prototype.init=function()
 {
+  var word_list,store_selection
   //db=this
   //ajax=new ajax
   //ajax.get('words_classic_texts.json',function(req_json){db.load(req_json)},false)
@@ -48,7 +49,7 @@ Words_Database.prototype.get_selection=function()
 }
 Words_Database.prototype.get_words=function(ch)
 {
-  index=this._words_keys.indexOf(ch)
+  var index=this._words_keys.indexOf(ch)
   //console.log(ch)
   //console.log(index)
   if(index!=-1)
@@ -78,9 +79,10 @@ Words_Database.prototype.get_url=function(nu)
 Words_Database.prototype.load=function(resp_json)
 {
   //json=eval(resp_json)
-  json=resp_json
-  len=json.length
-  for(i=0;i<len;i++)
+  var json=resp_json
+  var len=json.length
+  var ascii
+  for(var i=0;i<len;i++)
   {
     ascii=i+97
     this._words_keys[i]=String.fromCharCode(ascii)

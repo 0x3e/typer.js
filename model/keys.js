@@ -202,7 +202,7 @@ Keys.prototype.equivalent=function(key_code,letter)
 }
 Keys.prototype.get_char=function(code)
 {
-  if(timers[16])
+  if(window.timers[16])
   {
     //console.log(this.shift_char[code])
     return this.shift_char[code]
