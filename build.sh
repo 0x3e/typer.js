@@ -16,7 +16,7 @@ js.js"
 
 if [ -f jsl/jsl ]
 then
-  echo "Linting .."
+  echo "jsl Linting .."
   for js_file in $js_files
   do
     jsl/jsl -nologo -nosummary -nofilelisting -conf conf/jsl.conf -process $js_file
@@ -29,9 +29,29 @@ then
   then
     exit 1
   fi
+  echo "jsl Linted"
+fi
+if [ -f jslint/bin/jslint.js ]
+then
+  echo "jslint Linting .."
+  for js_file in $js_files
+  do
+    out=$(jslint/bin/jslint.js $js_file | grep -v '^OK$')
+    if [ $? -eq 0 ]
+    then
+      fails_occured=true
+      echo $js_file
+      echo "$out"
+    fi
+  done
+  if [ $fails_occured ]
+  then
+    exit 1
+  fi
+  echo "jslint Linted"
 fi
 
-build_number=168
+build_number=174
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
