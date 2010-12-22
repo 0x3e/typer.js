@@ -51,7 +51,7 @@ then
   echo "jslint Linted"
 fi
 
-build_number=174
+build_number=176
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -72,7 +72,7 @@ echo "CACHE MANIFEST
 > c.m
 
 cat $js_files \
-|sed -e 's/.*console.log.*//' \
+|sed -e 's/.*console.log.*//' -e 's/^"use strict";$//'\
 > typer_all.js
 
 if [ -f compiler/compiler.jar ]

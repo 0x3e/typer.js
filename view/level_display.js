@@ -1,6 +1,8 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Level_Display:true,Display,document */
 Level_Display=function(display_parent)
 {
   this.display_parent=display_parent;
@@ -15,11 +17,11 @@ Level_Display.prototype.init=function(chars)
 };
 Level_Display.prototype.load_letters=function(chars)
 {
-  var el;
+  var i,el,letters_in_current_words;
  //console.log(chars)
   this.add_div({id:'letters_container'});
-  var letters_in_current_words=chars.length;
-  for(var i=0;i<letters_in_current_words;i++)
+  letters_in_current_words=chars.length;
+  for(i=0;i<letters_in_current_words;i+=1)
   {
     if(chars[i]==='\n')
     {
@@ -68,7 +70,7 @@ Level_Display.prototype.error_letter=function(letter_index)
   if(isNaN(this.errors[letter_index])){
     this.errors[letter_index]=1;}
   else if(this.errors[letter_index]<5){
-    this.errors[letter_index]++;}
+    this.errors[letter_index]+=1;}
   el = document.getElementById('l'+letter_index);
   if(el) 
   {

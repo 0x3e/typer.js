@@ -1,6 +1,8 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Store:true,localStorage,document */
 Store=function(){};
 Store.prototype.set=function(key,value)
 {
@@ -8,8 +10,8 @@ Store.prototype.set=function(key,value)
 };
 Store.prototype.set_cookie=function(key,value)
 {
-  var expires;
-  var d = new Date();
+  var expires,d;
+  d = new Date();
   d.setTime(d.getTime()+(365*24*60*60*1000));
   expires = "; expires="+d.toGMTString();
   document.cookie = key+'='+value+'; expires='+expires+' path=/';
@@ -20,12 +22,11 @@ Store.prototype.get=function(key)
 };
 Store.prototype.get_cookie_value=function(name)
 {
-  var split_keys;
-  var cookie=document.cookie;
-  var i=0;
-  var split_values=cookie.split(";");
-  var length=split_values.length;
-  for(i=0;i<length;i++)
+  var i,split_keys,cookie,split_values,length;
+  cookie=document.cookie;
+  split_values=cookie.split(";");
+  length=split_values.length;
+  for(i=0;i<length;i+=1)
   {
     split_keys=split_values[i].split("=");
     split_keys[0]=split_keys[0].replace(/^ /,"");

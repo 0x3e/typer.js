@@ -1,18 +1,26 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Typer:true,Keys,Words_Database,Display,Menu,Level,store */
+/*global setInterval,clearInterval */
 Typer=function(parent_ob)
 {
+  var repeat,timers,that;
   this.repeat=250;
-  var repeat=this.repeat;
+  repeat=this.repeat;
   this.timers=[];
-  var timers=this.timers;
-  var that=this;
+  timers=this.timers;
+  that=this;
   this.context='menu';
   this.keys=new Keys(timers);
   this.words_database=new Words_Database();
   this.words_database.init();
-  this.display=new Display({menu:'menu_display_area',level:'level_display_area',score:'score_display_area'});
+  this.display=new Display({
+    menu:'menu_display_area',
+    level:'level_display_area',
+    score:'score_display_area'
+  });
   this.menu=new Menu(this);
   this.level=new Level(this);
 

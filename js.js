@@ -1,3 +1,9 @@
+"use strict";
+/**
+ * @constructor
+*/
+/*global Store,Typer */
+/*global window,document */
 var store=new Store();
 var typer=new Typer(document);
 /*jslint sub: true */

@@ -1,6 +1,9 @@
+"use strict";
 /**
  * @constructor
 */
+/*jslint maxlen: 9900 */
+/*global Words_List:true */
 Words_List=function(){
   this.list=[{
   "Title":"THE LIFE OF KING HENRY THE FIFTH",

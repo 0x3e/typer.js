@@ -1,6 +1,8 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Score_Display:true,Display,document */
 Score_Display=function(parent_id)
 {
   this.display_parent=parent_id;
@@ -49,7 +51,8 @@ Score_Display.prototype.init=function()
     inner_html:'0'
   });
 };
-Score_Display.prototype.update_totals=function(tot,correct,errors,wpm,best)
+Score_Display.prototype.update_totals=
+  function(tot,correct,errors,wpm,best)
 {
   var el = document.getElementById('word');
   el.innerHTML=Math.round(correct/5);

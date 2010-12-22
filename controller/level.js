@@ -1,6 +1,8 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Level:true,Level_Display,Score */
 Level=function(typer)
 {
   this.typer=typer;
@@ -18,38 +20,39 @@ Level=function(typer)
 };
 Level.prototype.key_action=function(key_code)
 {
+  var letter,d;
   if(key_code===undefined){return false;}
   if(this.keys.meta(key_code)===true){return true;}
   if(this.current_press===0)
   {
-    var d=new Date();
+    d=new Date();
     this.start_time=d.getTime();
     d=null;
   }
-  this.current_press++;
-  var letter=this.words[this.current_letter];
+  this.current_press+=1;
+  letter=this.words[this.current_letter];
   if(this.keys.equivalent(key_code,letter))
   {
-    this.correct_letters++;
-    this.current_letter++;
+    this.correct_letters+=1;
+    this.current_letter+=1;
     this.level_display.update_letters(this.current_letter);
     if(this.current_letter===this.words.length){this.complete();}
     return true;
   }
   else
   {
-    this.incorrect_letters++;
+    this.incorrect_letters+=1;
     this.level_display.error_letter(this.current_letter);
   }
   return false;
 };
 Level.prototype.complete=function()
 {
-  var level;
-  var d=new Date();
+  var level,d,new_score,best,wpm;
+  d=new Date();
   this.total_time=d.getTime()-this.start_time;
   this.typing=false;
-  var new_score={
+  new_score={
     "c":this.correct_letters,
     "i":this.incorrect_letters,
     "t":this.total_time,
@@ -57,8 +60,8 @@ Level.prototype.complete=function()
   };
   level=this.words_database.get_selected_url();
   this.score.update(level,new_score);
-  var best=this.score.get_best(level);
-  var wpm=this.score.calculate_wpm(new_score);
+  best=this.score.get_best(level);
+  wpm=this.score.calculate_wpm(new_score);
   this.score.display.update_totals(
     this.total_time,
     this.correct_letters,

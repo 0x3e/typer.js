@@ -1,12 +1,16 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Score:true,Score_Display,store */
+
 Score=function(display_parent,words_database)
 {
   this.display=new Score_Display(display_parent);
 };
 Score.prototype.update=function(key,score)
 {
+  var level_scores,score_ob;
 /*jslint sub: true */
   if( 
     score['c']===undefined||
@@ -15,10 +19,10 @@ Score.prototype.update=function(key,score)
     score['s']===undefined)
   {return false;}
 /*jslint sub: false */
-  var level_scores=this.get_level_scores(key);
+  level_scores=this.get_level_scores(key);
   try{level_scores.push(score);}
   catch(e){level_scores=[score];}
-  var score_ob=JSON.stringify(level_scores);
+  score_ob=JSON.stringify(level_scores);
   if(key){store.set(key,score_ob);}
   return true;
 };
@@ -35,10 +39,10 @@ Score.prototype.get_level_scores=function(key)
 };
 Score.prototype.get_best=function(key)
 {
-  var level_scores=this.get_level_scores(key);
-  var best_wpm=0;
-  var i,ii,score,wpm;
-  for(i=0,ii=level_scores.length;i<ii;i++)
+  var i,ii,score,wpm,level_scores,best_wpm;
+  level_scores=this.get_level_scores(key);
+  best_wpm=0;
+  for(i=0,ii=level_scores.length;i<ii;i+=1)
   {
     score=level_scores[i];
     wpm=this.calculate_wpm(score);

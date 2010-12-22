@@ -1,6 +1,8 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Display:true,document */
 Display=function(ob)
 {
   if(ob){
@@ -28,8 +30,8 @@ Display.prototype.add_span=function(ob)
 };
 Display.prototype.add_element=function(ob)
 {
-  var div = document.createElement(ob.element);
-  var el;
+  var el,div;
+  div = document.createElement(ob.element);
   div.id=ob.id;
   if(ob.classes){div.className=ob.classes;}
   if(ob.inner_html){div.innerHTML=ob.inner_html;}

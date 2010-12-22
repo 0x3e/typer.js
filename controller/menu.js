@@ -1,10 +1,13 @@
+"use strict";
 /**
  * @constructor
 */
+/*global Menu:true,Menu_Display */
 Menu=function(typer)
 {
   this.typer=typer;
-  this.display=new Menu_Display(typer.display.menu,typer.words_database);
+  this.display=new Menu_Display(
+    typer.display.menu,typer.words_database);
   this.keys=typer.keys;
   this.words_database=typer.words_database;
 };
