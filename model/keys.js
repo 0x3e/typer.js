@@ -5,7 +5,7 @@
 /*global Keys:true */
 Keys=function(timers){
   this.timers=timers;
-  this.meta=[0,16,17,18,20,27];
+  this.metas=[0,16,17,18,20,27];
   this.char_char={
     8:'backspace',
     9:'tab',
@@ -212,7 +212,7 @@ Keys.prototype.get_char=function(code)
 };
 Keys.prototype.meta=function(key_code)
 {
-  if(this.meta.indexOf(key_code)!==-1){
+  if(this.metas.indexOf(key_code)!==-1){
     return true;}
   else{
     return false;}
