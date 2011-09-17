@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Score_Display:true,Display,document */
-Score_Display=function(parent_id)
+var Score_Display=function(parent_id)
 {
   this.display_parent=parent_id;
 };

@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Level:true,Level_Display,Score */
-Level=function(typer)
+var Level=function(typer)
 {
   this.typer=typer;
   this.level_display=new Level_Display(typer.display.level);

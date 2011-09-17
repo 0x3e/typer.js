@@ -4,7 +4,7 @@
 */
 /*global Typer:true,Keys,Words_Database,Display,Menu,Level,store */
 /*global setInterval,clearInterval */
-Typer=function(parent_ob)
+var Typer=function(parent_ob)
 {
   var repeat,timers,that;
   this.repeat=250;

@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Words_Database:true,Words_List,store */
-Words_Database=function()
+var Words_Database=function()
 {
   this.selection='a';
   this.words_keys=[];

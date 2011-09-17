@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Store:true,localStorage,document */
-Store=function(){};
+var Store=function(){};
 Store.prototype.set=function(key,value)
 {
   localStorage.setItem(key, value);

@@ -4,15 +4,21 @@
 */
 /*jslint maxlen: 9900 */
 /*global Words_List:true */
-Words_List=function(){
+var Words_List=function(){
   this.list=[{
   "Title":"THE LIFE OF KING HENRY THE FIFTH",
   "Author":"William Shakespeare",
   "Source":"Project Gutenberg",
-  "Source_URL":"http://www.gutenberg.org/ebooks/2253",
   "URL":"http://0x3e.com/typer.js/words/1",
   "Content":
 "Once more unto the breach, dear friends, once more;\nOr close the wall up with our English dead."
+},{
+  "Title":"The glass bead game",
+  "Author":"Hermann Hesse",
+  "URL":"http://0x3e.com/typer.js/words/7",
+  "Content":
+"Therefore the music of a well-ordered age is calm and cheerful, and so is its government. The music of a restive age is excited and fierce, and its government is perverted. The music of a decaying state is sentimental and sad, and its government is imperiled."
+
 },{
   "Title":"Dracula",
   "Author":"Bram Stoker",

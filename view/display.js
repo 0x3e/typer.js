@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Display:true,document */
-Display=function(ob)
+var Display=function(ob)
 {
   if(ob){
     this.menu=ob.menu;

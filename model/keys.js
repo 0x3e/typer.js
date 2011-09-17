@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Keys:true */
-Keys=function(timers){
+var Keys=function(timers){
   this.timers=timers;
   this.metas=[0,16,17,18,20,27];
   this.char_char={

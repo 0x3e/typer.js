@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Menu_Display:true,Display,document */
-Menu_Display=function(parent_id,words_database)
+var Menu_Display=function(parent_id,words_database)
 {
   this.display_parent=parent_id;
   this.words_database=words_database;

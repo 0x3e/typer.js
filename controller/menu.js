@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Menu:true,Menu_Display */
-Menu=function(typer)
+var Menu=function(typer)
 {
   this.typer=typer;
   this.display=new Menu_Display(

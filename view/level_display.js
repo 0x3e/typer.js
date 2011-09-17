@@ -3,7 +3,7 @@
  * @constructor
 */
 /*global Level_Display:true,Display,document */
-Level_Display=function(display_parent)
+var Level_Display=function(display_parent)
 {
   this.display_parent=display_parent;
   this.errors=[];

@@ -4,7 +4,7 @@
 */
 /*global Score:true,Score_Display,store */
 
-Score=function(display_parent,words_database)
+var Score=function(display_parent,words_database)
 {
   this.display=new Score_Display(display_parent);
 };
