@@ -10,6 +10,7 @@ var Score=function(display_parent,words_database)
 };
 Score.prototype.update=function(key,score)
 {
+  if(key){key="score."+key;}
   var level_scores,score_ob;
 /*jslint sub: true */
   if( 
@@ -40,6 +41,7 @@ Score.prototype.get_level_scores=function(key)
 Score.prototype.get_best=function(key)
 {
   var i,ii,score,wpm,level_scores,best_wpm;
+  if(key){key="score."+key;}
   level_scores=this.get_level_scores(key);
   best_wpm=0;
   for(i=0,ii=level_scores.length;i<ii;i+=1)

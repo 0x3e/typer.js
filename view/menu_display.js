@@ -20,7 +20,7 @@ Menu_Display.prototype.init=function()
     this.add_div({
       id:'con_label_'+i,
       classes:'menu_label label',
-      inner_html:this.words_database.get_key(i)+')'
+      inner_html:"x"+')'
     });
     this.add_div({
       id:'con_'+i,
@@ -33,4 +33,19 @@ Menu_Display.prototype.init=function()
       inner_html:':'+this.words_database.get_author(i)
     });
   }
+  this.add_div({
+    id:'con_label_'+(len+1),
+    classes:'menu_label label',
+    inner_html:"h)"
+  });
+  this.add_div({
+    id:'con_'+(len+1),
+    classes:'con',
+    inner_html:"Load"
+  });
+  this.add_div({
+    id:'aut_'+(len+1),
+    classes:'aut',
+    inner_html:': Load a new item'
+  });
 };

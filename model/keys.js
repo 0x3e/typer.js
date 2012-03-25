@@ -210,6 +210,15 @@ Keys.prototype.get_char=function(code)
     return this.char_char[code];
   }
 };
+Keys.prototype.is_control=function(code)
+{
+  if(this.timers[17]){
+    return true;
+  }
+  else{
+    return false;
+  }
+};
 Keys.prototype.meta=function(key_code)
 {
   if(this.metas.indexOf(key_code)!==-1){

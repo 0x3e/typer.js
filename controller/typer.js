@@ -56,10 +56,50 @@ var Typer=function(parent_ob)
       delete timers[key];
     }}
   };
+  this.waited=0;
+  this.wait=false;
+  if(this.jsonp_twitter_call(false))
+    this.wait=true;
+  else if(this.jsonp_gist_call(false))
+    this.wait=true;
 };
+Typer.prototype.jsonp_twitter_call=function(twitter)
+{
+  if(!twitter)
+  {
+    twitter = getUrlVar('tweet');
+  }
+  if(twitter)
+  {
+    if(this.words_database.load("tweet."+twitter))
+      return false;
+    console.log('jsonp');
+    var script = document.createElement('script');
+    script.src = 'http://api.twitter.com/1/statuses/show/'+twitter+'.json?callback=t'
+    document.body.appendChild(script);
+    return true;
+  }
+}
+Typer.prototype.jsonp_gist_call=function(gist)
+{
+  if(!gist)
+  {
+    gist = getUrlVar('gist');
+  }
+  if(gist)
+  {
+    if(this.words_database.load("gist."+gist))
+      return false;
+    console.log('jsonp');
+    var script = document.createElement('script');
+    script.src = 'https://api.github.com/gists/'+gist+'?callback=g';
+    document.body.appendChild(script);
+    return true;
+  }
+}
 Typer.prototype.key_action=function(key_code)
 {
-  if(this.keys.equivalent(key_code,'escape'))
+  if(this.keys.equivalent(key_code,'escape')||(this.keys.is_control()&&this.keys.equivalent(key_code,'c')))
   {
     this.switch_context();
     return;
@@ -112,12 +152,46 @@ Typer.prototype.set_context=function(context)
     this.menu.fg();
   }
 };
+Typer.prototype.new_tweet=function(ob)
+{
+  console.log(ob);
+  this.words_database.add("tweet."+ob.id_str,{'text':ob.text,'author':ob.user.screen_name});
+  this.wait=false;
+}
+Typer.prototype.new_gist=function(ob)
+{
+  var file,text,login;
+  for(var files in ob.data.files)
+  {
+    file=files;
+    break;
+  } 
+  text=ob.data.files[file].content;
+  console.log(ob.data);
+  if(ob.data.user!=null)
+    login=ob.data.user.login;
+  if(!login) login="anonymous";
+  this.words_database.add("gist."+ob.data.id,{'text':text,'author':login});
+  this.wait=false;
+}
 Typer.prototype.init=function()
 {
-  this.display.init();
-  this.level.init();
-  this.menu.init();
-  var context=store.get('context');
-  //console.log(context)
-  this.set_context(context);
+  if(this.wait)
+  {
+    if(this.waited<20)
+    {
+      var that=this;
+      setTimeout(function(){that.init()},100);
+    }
+    this.waited++;
+    console.log("typer.waiting");
+  }
+  else
+  {
+    this.display.init();
+    this.level.init();
+    this.menu.init();
+    var context=store.get('context');
+    this.set_context(context);
+  }
 };

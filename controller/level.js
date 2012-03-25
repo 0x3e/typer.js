@@ -10,7 +10,7 @@ var Level=function(typer)
   this.keys=typer.keys;
   this.words_database=typer.words_database;
   this.score=new Score(typer.display.score,this.words_database);
-  this.words=typer.words_database.get_selected_words();
+  this.words='';
   this.current_letter=0;
   this.current_press=0;
   this.correct_letters=0;
@@ -58,7 +58,7 @@ Level.prototype.complete=function()
     "t":this.total_time,
     "s":this.start_time
   };
-  level=this.words_database.get_selected_url();
+  level=this.words_database.get_selected_key();
   this.score.update(level,new_score);
   best=this.score.get_best(level);
   wpm=this.score.calculate_wpm(new_score);
@@ -81,6 +81,7 @@ Level.prototype.bg=function()
 };
 Level.prototype.init=function()
 {
+  this.words=this.words_database.get_selected_words();
   this.typer.typing=true;
   this.level_display.init(this.words);
   this.score.display.init();

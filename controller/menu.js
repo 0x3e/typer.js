@@ -21,6 +21,7 @@ Menu.prototype.bg=function()
 };
 Menu.prototype.key_action=function(key_code)
 {
+  return;
   var key_char=this.keys.get_char(key_code);
   if(this.words_database.get_words(key_char))
   {
