@@ -184,7 +184,7 @@ var Keys=function(timers){
     186:':',
     187:'+',
     188:'<',
-    189:'dash',
+    189:'_',
     190:'>',
     191:'?',
     192:'~',
@@ -196,7 +196,7 @@ var Keys=function(timers){
 };
 Keys.prototype.equivalent=function(key_code,letter)
 {
-  //console.log(key_code)
+  //console.log(key_code+" "+letter)
   if(this.get_char(key_code)===letter){return true;}
   else{return false;}
 };

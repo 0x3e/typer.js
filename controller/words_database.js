@@ -13,9 +13,12 @@ var Words_Database=function()
 Words_Database.prototype.init=function()
 {
   var store_selection,store_items;
+  var len=0;
   store_items=JSON.parse(store.get('words_database_list'));
   console.log(store_items);
-  var len=store_items.length;
+  if(store_items!=null)
+    len=store_items.length;
+
   for(var i=0;i<len;i++)
   {
     this.load(store_items[i]);
@@ -39,33 +42,40 @@ Words_Database.prototype.set_selection=function(sel)
 Words_Database.prototype.load=function(key)
 {
   console.log(key);
-  var val,val_string;
-  if(val_string=store.get(key))
+  var val;
+  var val_string=store.get(key);
+  var cur=this.words_keys.indexOf(key);
+  console.log(this.words_keys);
+  if(val_string)
   {
     console.log("loading");
     val=JSON.parse(val_string);
+    console.log(val);
     this.words_keys.unshift(key);
-    this.words_texts.unshift(val.text);
+    this.words_texts.unshift(val.text.replace(/\r\n/g,'\n'));
     this.words_authors.unshift(val.author);
+    console.log("loaded 1");
     return true;
   }
 }
 Words_Database.prototype.add=function(key,val)
 {
-  var db=[];
+  var db={};
   var db_json=store.get("words_database_list");
   var db_string;
   if(db_json)
   {
     try{db=JSON.parse(db_json);}
-    catch(e){db=[];}
+    catch(e){db={};}
   }
-  try{db.push(key);}
-  catch(e){db=[key];}
-  console.log(db);
+  try{db[key]=1;}
+  catch(e){db[key]=1;}
   db_string=JSON.stringify(db);
   if(key){store.set("words_database_list",db_string);}
   db=JSON.parse(db_json);
+  console.log(key);
+  console.log(val);
+  console.log(db);
   store.set(key,JSON.stringify(val));
   this.load(key);
 }

@@ -1,6 +1,7 @@
 #!/bin/bash
-js_files="lib/json2.js
-controller/score.js
+# lib/json2.js
+
+js_files="controller/score.js
 model/words_classic_texts.js
 controller/words_database.js
 view/display.js
@@ -51,7 +52,7 @@ then
   echo "jslint Linted"
 fi
 
-build_number=180
+build_number=205
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 

@@ -12,7 +12,7 @@ var Typer=function(parent_ob)
   this.timers=[];
   timers=this.timers;
   that=this;
-  this.context='menu';
+  this.context='level';
   this.keys=new Keys(timers);
   this.words_database=new Words_Database();
   this.words_database.init();
@@ -58,10 +58,13 @@ var Typer=function(parent_ob)
   };
   this.waited=0;
   this.wait=false;
+  this.set_context('level');
   if(this.jsonp_twitter_call(false))
     this.wait=true;
-  else if(this.jsonp_gist_call(false))
+  if(this.jsonp_gist_call(false)===true)
     this.wait=true;
+  else
+    this.wait=false;
 };
 Typer.prototype.jsonp_twitter_call=function(twitter)
 {
@@ -72,7 +75,7 @@ Typer.prototype.jsonp_twitter_call=function(twitter)
   if(twitter)
   {
     if(this.words_database.load("tweet."+twitter))
-      return false;
+      return true;
     console.log('jsonp');
     var script = document.createElement('script');
     script.src = 'http://api.twitter.com/1/statuses/show/'+twitter+'.json?callback=t'
@@ -89,10 +92,13 @@ Typer.prototype.jsonp_gist_call=function(gist)
   if(gist)
   {
     if(this.words_database.load("gist."+gist))
-      return false;
+    {
+      console.log('loaded 2');
+      return 2;
+    }
     console.log('jsonp');
     var script = document.createElement('script');
-    script.src = 'https://api.github.com/gists/'+gist+'?callback=g';
+    script.src = 'https://api.github.com/gists/'+gist+'?callback=G';
     document.body.appendChild(script);
     return true;
   }
@@ -110,7 +116,7 @@ Typer.prototype.key_action=function(key_code)
   else if(this.context==='level'){
     this.level.key_action(key_code);}
   else{
-    this.switch_context('menu');}
+    this.switch_context('level');}
 };
 Typer.prototype.reset_level=function()
 {
@@ -118,9 +124,9 @@ Typer.prototype.reset_level=function()
   this.level=new Level(this);
   this.level.init();
 };
-Typer.prototype.switch_context=function()
+Typer.prototype.switch_context=function(set)
 {
-  if (this.context==='menu')
+  if (set==='level'||this.context==='menu')
   {
     this.context='level';
     store.set('context','level');
@@ -178,7 +184,7 @@ Typer.prototype.init=function()
 {
   if(this.wait)
   {
-    if(this.waited<20)
+    if(this.waited<60)
     {
       var that=this;
       setTimeout(function(){that.init()},100);

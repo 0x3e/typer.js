@@ -16,7 +16,8 @@ function t(ob)
 {
   typer.new_tweet(ob);
 }
-function g(ob)
+var G;
+G=function(ob)
 {
   typer.new_gist(ob);
 }

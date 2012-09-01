@@ -13,7 +13,6 @@
 <?php if($_REQUEST['cmp']):?>
 <script type="text/javascript" src="typer_all.js"></script>
 <?php else:?>
-<script type="text/javascript" src="lib/json2.js"></script>
 <script type="text/javascript" src="controller/score.js"></script>
 <script type="text/javascript" src="model/words_classic_texts.js"></script>
 <script type="text/javascript" src="controller/words_database.js"></script>
