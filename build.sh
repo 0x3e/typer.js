@@ -52,7 +52,7 @@ then
   echo "jslint Linted"
 fi
 
-build_number=205
+build_number=209
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -69,6 +69,8 @@ fi
 echo "Build $build_number"
 echo "CACHE MANIFEST
 # build $build_number
+t.js
+c.css
 "\
 > c.m
 
@@ -95,8 +97,4 @@ else
 fi
 
 echo "<!DOCTYPE html><!--$build_number-->" > index.html
-echo "<html lang=en manifest=c.m><head><meta charset=utf-8 /><title>0x3e</title><style>" >> index.html
-cat c.css >> index.html
-echo "</style></head><body><script>" >> index.html
-cat t.js >> index.html
-echo "</script></body></html>" >> index.html
+echo "<html lang=en manifest=c.m><head><meta charset=utf-8 /><title>0x3e</title><link href=c.css rel=stylesheet type=text/css /><body><script type=text/javascript src=t.js></script></body></html>" >> index.html
