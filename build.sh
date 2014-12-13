@@ -52,7 +52,7 @@ then
   echo "jslint Linted"
 fi
 
-build_number=209
+build_number=210
 (( next=build_number+1 ))
 sed -i -e "s/build_number=$build_number/build_number=$next/" "$0"
 
@@ -97,4 +97,4 @@ else
 fi
 
 echo "<!DOCTYPE html><!--$build_number-->" > index.html
-echo "<html lang=en manifest=c.m><head><meta charset=utf-8 /><title>0x3e</title><link href=c.css rel=stylesheet type=text/css /><body><script type=text/javascript src=t.js></script></body></html>" >> index.html
+echo "<html lang=en manifest=c.m><head><link href=c.css rel=stylesheet /><body><script src=t.js />" >> index.html
